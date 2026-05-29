@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -14,27 +5,6 @@
     "premium-footer": {
       "type": "premium-footer",
       "blocks": {
-        "links_WTgzdc": {
-          "type": "links",
-          "settings": {
-            "title": "Products",
-            "links": "Water Softener\nWashing Ball\nTile Cleaner"
-          }
-        },
-        "links_byA6WF": {
-          "type": "links",
-          "settings": {
-            "title": "Company",
-            "links": "About\nScience\nContact"
-          }
-        },
-        "links_x7gfcC": {
-          "type": "links",
-          "settings": {
-            "title": "Support",
-            "links": "FAQs\nWarranty\nReturns"
-          }
-        },
         "social_8iK8Ek": {
           "type": "social",
           "settings": {
@@ -58,9 +28,6 @@
         }
       },
       "block_order": [
-        "links_WTgzdc",
-        "links_byA6WF",
-        "links_x7gfcC",
         "social_8iK8Ek",
         "social_ikjjmh",
         "social_79TiEM"

@@ -11,7 +11,7 @@
         {% endif %}
         <div class="pp-ft-brand-name grad-text">{{ section.settings.brand }}</div>
         {% if section.settings.tagline != blank %}
-          <p class="pp-ft-tagline">{{ section.settings.tagline }}</p>
+          <p class="pp-ft-tagline">{{ section.settings.tagline | replace: '50,000+ homes', '15+ lakh homes' | replace: '50,000+', '15+ lakh' }}</p>
         {% endif %}
         <div class="pp-ft-socials">
           {% for block in section.blocks %}{% if block.type == 'social' and block.settings.link != blank %}
@@ -38,7 +38,6 @@
         <ul class="pp-ft-links">
           <li><a href="{{ routes.root_url }}">{{ section.settings.shop_home }}</a></li>
           <li><a href="{{ routes.all_products_collection_url }}">{{ section.settings.shop_all }}</a></li>
-          <li><a href="{{ routes.collections_url }}/bestsellers">{{ section.settings.shop_trending }}</a></li>
           <li><a href="{{ routes.cart_url }}">{{ section.settings.shop_cart }}</a></li>
         </ul>
       </nav>
