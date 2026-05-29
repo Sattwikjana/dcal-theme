@@ -1,0 +1,104 @@
+<section class="sec pp-tech-sec">
+  <div class="container">
+    <div class="pp-tech-grid">
+      <div class="pp-tech-image-wrap" data-reveal>
+        {% if section.settings.image != blank %}
+          <div class="glass tilt pp-tech-image-card">
+            <img src="{{ section.settings.image | image_url: width: 1000 }}"
+                 width="1000" height="1000" loading="lazy"
+                 alt="{{ section.settings.heading | escape }}">
+          </div>
+        {% else %}
+          <div class="glass pp-tech-image-card pp-tech-image-placeholder">
+            {% render 'icon', name: 'flask-conical', size: 80 %}
+            <span>Upload technology image</span>
+          </div>
+        {% endif %}
+        <div class="pp-tech-image-glow"></div>
+      </div>
+
+      <div class="pp-tech-copy">
+        <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+        <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:20px 0 24px">{{ section.settings.heading }}</h2>
+        <div class="pp-tech-body" data-reveal data-reveal-delay="2">{{ section.settings.body }}</div>
+      </div>
+    </div>
+
+    <div class="pp-tech-chips">
+      {% for block in section.blocks %}
+        {%- assign ic = block.settings.icon | default: 'flask-conical' -%}
+        <div class="pp-tech-chip glass" data-reveal data-reveal-delay="{% cycle 1,2,3 %}">
+          <div class="pp-tech-chip-icon">{% render 'icon', name: ic, size: 24 %}</div>
+          <div class="pp-tech-chip-body">
+            <div class="pp-tech-chip-label">{{ block.settings.label }}</div>
+            <div class="pp-tech-chip-text">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pp-tech-sec{background:#fff;padding:100px 0}
+  .pp-tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+
+  .pp-tech-image-wrap{position:relative}
+  .pp-tech-image-card{position:relative;padding:18px;background:#fff;border-radius:28px;z-index:2}
+  .pp-tech-image-card img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block;border-radius:20px;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .pp-tech-image-card:hover img{transform:scale(1.04)}
+  .pp-tech-image-placeholder{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#0EA5E9;font-weight:600;background:linear-gradient(135deg,#ECFEFF,#F0F9FF)}
+  .pp-tech-image-glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(0,199,183,.18),transparent 60%);filter:blur(40px);z-index:1;pointer-events:none}
+
+  .pp-tech-copy{max-width:560px}
+  .pp-tech-body p{font-size:16px;line-height:1.75;color:#334155;margin:0 0 16px}
+  .pp-tech-body p:last-child{margin-bottom:0}
+
+  .pp-tech-chips{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pp-tech-chip{display:flex;gap:16px;align-items:flex-start;padding:24px;background:rgba(255,255,255,.85);border:1px solid #E2E8F0;border-radius:20px;box-shadow:0 12px 28px -16px rgba(2,8,23,.18);transition:transform .35s ease,box-shadow .35s ease}
+  .pp-tech-chip:hover{transform:translateY(-4px);box-shadow:0 20px 40px -16px rgba(2,8,23,.22)}
+  .pp-tech-chip-icon{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#ECFEFF;color:#00C7B7}
+  .pp-tech-chip-label{font-size:11px;font-weight:700;color:#0F766E;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .pp-tech-chip-text{font-size:14px;color:#334155;line-height:1.55}
+
+  @media(max-width:900px){
+    .pp-tech-sec{padding:60px 0}
+    .pp-tech-grid{grid-template-columns:1fr;gap:40px}
+    .pp-tech-chips{grid-template-columns:1fr;margin-top:48px}
+  }
+</style>
+
+{% schema %}
+{
+  "name":"Premium About Tech",
+  "max_blocks":3,
+  "settings":[
+    {"type":"image_picker","id":"image","label":"Technology image"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"OUR TECHNOLOGY"},
+    {"type":"text","id":"heading","label":"Heading (HTML allowed)","default":"The science of <span class='grad-text'>masking calcium</span>"},
+    {"type":"richtext","id":"body","label":"Body copy","default":"<p>D'Cal uses proprietary technology to mask calcium ions, making them inert and incapable of forming scales on your taps, fixtures, and pipes.</p><p>The system prevents scaling and hard water stains on your faucets, taps, fixtures, and mirrors — ensuring your bathroom and kitchen fittings look new for longer.</p><p>Appliances using borewell water like geysers and washing machines are protected from internal damage and corrosion, extending their lifespan.</p><p>D'Cal reduces the harmful effects of hard water on your hair and skin while preventing corrosion of your entire house piping system.</p>"}
+  ],
+  "blocks":[{
+    "type":"chip","name":"Info chip",
+    "settings":[
+      {"type":"select","id":"icon","label":"Icon","default":"flask-conical","options":[
+        {"value":"flask-conical","label":"Flask (contents)"},
+        {"value":"timer","label":"Timer (lifespan)"},
+        {"value":"droplet-tank","label":"Tank (how to use)"},
+        {"value":"droplet","label":"Droplet"},
+        {"value":"shield-check","label":"Shield check"},
+        {"value":"leaf","label":"Leaf"},
+        {"value":"check-circle","label":"Check circle"},
+        {"value":"settings","label":"Settings"}
+      ]},
+      {"type":"text","id":"label","label":"Label","default":"Chip label"},
+      {"type":"textarea","id":"text","label":"Body","default":"Chip body text."}
+    ]
+  }],
+  "presets":[{"name":"Premium About Tech","blocks":[
+    {"type":"chip","settings":{"icon":"flask-conical","label":"D'Cal Contents","text":"Tasteless, odorless, colorless, non-toxic material. Test reports available on website."}},
+    {"type":"chip","settings":{"icon":"timer","label":"Life of D'Cal","text":"10–12 months (depending on water usage). Repeat performance test after 10 months."}},
+    {"type":"chip","settings":{"icon":"droplet-tank","label":"How to Use","text":"Just drop in overhead water tank. Suitable for tanks ~1,500 litres. For apartments, contact us."}}
+  ]}]
+}
+{% endschema %}

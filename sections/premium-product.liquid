@@ -1,0 +1,230 @@
+<section class="sec pp-product-sec" style="background:linear-gradient(180deg,#fff,#F0FDFA);padding:32px 0 80px 0">
+  <div class="container">
+    <nav class="pp-crumb" style="margin-bottom:20px;font-size:13px;color:#64748B" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}" style="color:#64748B;text-decoration:none">Home</a>
+      <span style="margin:0 8px;color:#CBD5E1">/</span>
+      <a href="{{ routes.all_products_collection_url }}" style="color:#64748B;text-decoration:none">Products</a>
+      <span style="margin:0 8px;color:#CBD5E1">/</span>
+      <span style="color:#0B1220;font-weight:500">{{ product.title }}</span>
+    </nav>
+    <div class="pp-top">
+
+      <!-- ============ LEFT: Image gallery ============ -->
+      <div class="pp-col-gallery">
+        <div class="glass tilt" style="padding:12px;background:#fff;border-radius:28px;margin:0">
+          <div class="pp-image-wrap" style="aspect-ratio:1;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#ECFEFF,#F0F9FF);position:relative">
+            {% if product.featured_image %}
+              <img data-pp-main src="{{ product.featured_image | image_url: width: 1200 }}"
+                   width="1200" height="1200" loading="eager"
+                   alt="{{ product.title | escape }}"
+                   style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .3s ease">
+            {% else %}
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#94A3B8">{% render 'icon', name: 'package', size: 72 %}</div>
+            {% endif %}
+            {% if product.compare_at_price > product.price %}
+              <div style="position:absolute;top:18px;left:18px;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.05em">
+                SAVE {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
+            {% for img in product.images limit: 4 %}
+              <div class="pp-thumb" data-pp-thumb data-full="{{ img | image_url: width: 1200 }}" role="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.title | escape }}" style="aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#ECFEFF,#F0F9FF);border:2px solid {% if forloop.first %}#00C7B7{% else %}#E2E8F0{% endif %};cursor:pointer;transition:border-color .3s">
+                <img src="{{ img | image_url: width: 300 }}" width="300" height="300" loading="lazy" alt="{{ product.title | escape }} - view {{ forloop.index }}"
+                     style="width:100%;height:100%;object-fit:contain;display:block">
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if product.description != blank %}
+          <div class="pp-full-desc-card" style="background:#fff;border-radius:24px;padding:32px;border:1px solid #E2E8F0;margin-top:32px">
+            <div class="pp-full-desc">{{ product.description }}</div>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- ============ RIGHT: Product info ============ -->
+      <div class="pp-col-info">
+        <span class="eyebrow" style="margin:0">{{ product.type | default: 'PREMIUM PRODUCT' }}</span>
+        <h1 class="h-section" style="margin:14px 0 14px 0">{{ product.title }}</h1>
+
+        <!-- Rating row -->
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:18px;flex-wrap:wrap">
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="color:#F59E0B;display:inline-flex;gap:2px">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 17 %}{% endfor %}</span>
+            <span style="color:#64748B;font-size:14px">4.8 · 12,840+ reviews</span>
+          </div>
+          <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="product"></div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:baseline;margin-bottom:24px;flex-wrap:wrap">
+          <span data-pp-price style="font-size:36px;font-weight:800">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span data-pp-compare style="font-size:18px;color:#94A3B8;text-decoration:line-through">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+          <span style="font-size:13px;color:#64748B">Inclusive of all taxes</span>
+        </div>
+
+        <div data-pp-stock style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;margin-bottom:24px;background:{% if product.available %}#ECFDF5{% else %}#FEF2F2{% endif %}">
+          <span data-pp-stock-dot style="width:8px;height:8px;border-radius:50%;{% if product.available %}background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2);animation:pulse 2s infinite{% else %}background:#EF4444{% endif %}"></span>
+          <span data-pp-stock-text style="font-size:13px;font-weight:600;color:{% if product.available %}#065F46{% else %}#991B1B{% endif %}">{% if product.available %}In stock · Ships in 24 hours{% else %}Sold out{% endif %}</span>
+        </div>
+
+        {% form 'product', product, data-pp-form: true %}
+          <input type="hidden" name="id" data-pp-id value="{{ product.selected_or_first_available_variant.id }}">
+
+          {% if product.has_only_default_variant == false %}
+            <div style="margin-bottom:18px">
+              {% for option in product.options_with_values %}
+                {%- assign opt_pos = forloop.index0 -%}
+                <div style="margin-bottom:14px">
+                  <div style="font-size:13px;font-weight:600;color:#64748B;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase">{{ option.name }}</div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    {% for value in option.values %}
+                      <label data-pp-opt style="cursor:pointer">
+                        <input type="radio" name="options[{{ option.name }}]" value="{{ value | escape }}" data-opt-pos="{{ opt_pos }}" style="display:none" {% if option.selected_value == value %}checked{% endif %}>
+                        <span data-pp-opt-pill style="display:inline-block;padding:10px 18px;border:1.5px solid #E2E8F0;border-radius:99px;font-size:14px;font-weight:600;transition:all .2s;background:#fff">{{ value }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+            <div data-pp-qty style="display:flex;align-items:center;border:1.5px solid #E2E8F0;border-radius:14px;overflow:hidden;background:#fff">
+              <button type="button" data-qty="minus" aria-label="Decrease quantity" style="display:flex;align-items:center;padding:14px 16px;background:none;border:none;cursor:pointer;color:#0B1220">{% render 'icon', name: 'minus', size: 18 %}</button>
+              <input type="number" name="quantity" value="1" min="1" aria-label="Quantity" style="width:50px;text-align:center;border:none;font-size:16px;font-weight:600;background:transparent">
+              <button type="button" data-qty="plus" aria-label="Increase quantity" style="display:flex;align-items:center;padding:14px 16px;background:none;border:none;cursor:pointer;color:#0B1220">{% render 'icon', name: 'plus', size: 18 %}</button>
+            </div>
+            <button type="submit" data-pp-atc {% unless product.available %}disabled{% endunless %} class="btn btn-primary magnetic" style="flex:1;min-width:200px;justify-content:center;padding:16px{% unless product.available %};opacity:.5;cursor:not-allowed;pointer-events:none{% endunless %}">
+              {% if product.available %}Add to Cart · <span data-pp-atc-price>{{ product.price | money }}</span>{% else %}Sold out{% endif %}
+            </button>
+          </div>
+          <button type="submit" name="checkout" data-pp-buynow {% unless product.available %}disabled{% endunless %} class="btn magnetic" style="width:100%;justify-content:center;padding:16px;background:#0B1220;color:#fff;border-radius:999px;font-weight:600;border:none;cursor:pointer{% unless product.available %};opacity:.5;cursor:not-allowed;pointer-events:none{% endunless %}">
+            {% if product.available %}Buy it now {% render 'icon', name: 'zap', size: 16 %}{% else %}Unavailable{% endif %}
+          </button>
+        {% endform %}
+
+        <script type="application/json" data-pp-variants>[
+          {%- for v in product.variants -%}
+            {"id":{{ v.id }},"options":{{ v.options | json }},"available":{{ v.available }},"price":{{ v.price | money | json }},"compare_at":{% if v.compare_at_price > v.price %}{{ v.compare_at_price | money | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]</script>
+
+        <!-- Trust badges -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;padding:22px;border:1px solid #E2E8F0;border-radius:18px;background:#fff">
+          <div style="text-align:center">
+            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'truck', size: 26 %}</div>
+            <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">FREE SHIPPING</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">Pan-India · 3-5 days</div>
+          </div>
+          <div style="text-align:center">
+            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'shield-check', size: 26 %}</div>
+            <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">SECURE PAYMENT</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">UPI · Cards · COD</div>
+          </div>
+          <div style="text-align:center">
+            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'rotate-ccw', size: 26 %}</div>
+            <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">7-DAY RETURNS</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">Hassle-free refund</div>
+          </div>
+        </div>
+
+        <!-- Key benefits -->
+        <div style="margin-top:32px;display:grid;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>12+ months protection</strong> — one cartridge softens 50,000+ litres</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>Zero electricity</strong> — works during power cuts</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>NABL lab certified</strong> — 99% scale reduction verified</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>15-minute install</strong> — DIY-friendly, fits any tank</span></div>
+        </div>
+
+        <!-- Share buttons -->
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid #E2E8F0;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <span style="font-size:13px;font-weight:600;color:#64748B;letter-spacing:.05em;text-transform:uppercase">Share</span>
+          <a href="https://wa.me/?text={{ shop.url }}{{ product.url }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#25D366;color:#fff;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none">WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#1877F2;color:#fff;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none">Facebook</a>
+          <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title | url_encode }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#0B1220;color:#fff;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none">X / Twitter</a>
+        </div>
+
+        <!-- Accordion FAQ -->
+        <div style="margin-top:36px">
+          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#0F766E;margin-bottom:12px;text-transform:uppercase">Frequently asked</div>
+          {% for block in section.blocks %}
+            <details style="border-bottom:1px solid #E2E8F0;padding:18px 0;cursor:pointer">
+              <summary style="font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;color:#0B1220">
+                {{ block.settings.q }} <span style="font-size:22px;color:#00C7B7">+</span>
+              </summary>
+              <div style="margin-top:12px;color:#64748B;line-height:1.6;font-size:15px">{{ block.settings.a }}</div>
+            </details>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ FULL JUDGE.ME REVIEWS WIDGET ============ -->
+    <div style="margin-top:80px;padding-top:60px;border-top:1px solid #E2E8F0" data-reveal>
+      <div style="text-align:center;margin-bottom:40px">
+        <span class="eyebrow">VERIFIED REVIEWS</span>
+        <h2 class="h-section" style="margin:14px 0 8px">What our <span class="grad-text">customers say</span></h2>
+        <p class="lead" style="margin:0 auto">Real reviews from real D'Cal users across India.</p>
+      </div>
+      <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}"></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media(max-width:900px){.pp-product-sec{padding:20px 0 60px 0 !important}}
+  .pp-crumb a{transition:color .2s}
+  .pp-crumb a:hover{color:#0F766E}
+  /* LEFT cell = gallery + thumbnails + description stacked; RIGHT cell = sticky info.
+     Simple 2-col grid (no row-spanning), so the column tops always align and no gap
+     can open between the gallery and the description. Mobile stacks gallery -> description -> info. */
+  .pp-top{display:grid;grid-template-columns:1.1fr 1fr;column-gap:60px;align-items:start}
+  .pp-col-gallery{align-self:start;margin:0}
+  /* Sticky info column (desktop). No height cap — page scrolls naturally.
+     Scrollbar styling kept purely as a defensive nicety for any edge-case overflow. */
+  .pp-col-info{align-self:start;margin:0;position:sticky;top:100px;scrollbar-width:thin;scrollbar-color:#CBD5E1 transparent}
+  .pp-col-info::-webkit-scrollbar{width:8px}
+  .pp-col-info::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:99px}
+  .pp-col-info::-webkit-scrollbar-track{background:transparent}
+  @media(max-width:900px){.pp-top{grid-template-columns:1fr}.pp-col-info{position:static;margin-top:32px}}
+  details[open] summary span{transform:rotate(45deg)}
+  details summary span{transition:transform .3s;display:inline-block}
+  .pp-image-wrap:hover img{transform:scale(1.05)}
+  .pp-image-wrap img{transform-origin:center center}
+  /* Variant radio buttons */
+  label input[type="radio"]:checked + span{border-color:#00C7B7 !important;background:linear-gradient(135deg,#ECFEFF,#F0F9FF) !important;color:#0F766E !important}
+  label:hover span{border-color:#94A3B8}
+  /* Judge.me brand overrides */
+  .jdgm-prev-badge__stars{color:#F59E0B !important}
+  .jdgm-rev__author{font-weight:700 !important}
+  .jdgm-rev__title{color:#0B1220 !important}
+  .jdgm-write-rev-link{background:linear-gradient(135deg,#0EA5E9,#00C7B7) !important;color:#fff !important;border-radius:999px !important;padding:14px 24px !important;font-weight:600 !important;border:none !important}
+</style>
+
+{% schema %}
+{
+  "name":"Premium Product",
+  "blocks":[{
+    "type":"faq","name":"FAQ",
+    "settings":[
+      {"type":"text","id":"q","label":"Question","default":"How long does shipping take?"},
+      {"type":"textarea","id":"a","label":"Answer","default":"Orders ship within 24 hours and arrive in 3-5 business days across India via DTDC and Bluedart."}
+    ]
+  }],
+  "presets":[{"name":"Premium Product","blocks":[
+    {"type":"faq"},
+    {"type":"faq","settings":{"q":"Is installation included?","a":"Yes. Our certified plumber installs free within 100km of metro cities. DIY guide included for remote pin codes."}},
+    {"type":"faq","settings":{"q":"What's the warranty?","a":"Lifetime warranty on the cartridge body. Refill every 12 months."}},
+    {"type":"faq","settings":{"q":"Will it work on borewell water?","a":"Yes. Tested up to 1200 TDS. We recommend a sediment pre-filter for borewell water."}}
+  ]}]
+}
+{% endschema %}

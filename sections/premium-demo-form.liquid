@@ -1,0 +1,129 @@
+<section id="demo-form" class="sec noise" style="background:linear-gradient(135deg,#0EA5E9,#00C7B7);position:relative">
+  <div class="container">
+    <div class="glass" style="max-width:760px;margin:0 auto;padding:48px;background:rgba(255,255,255,.92)">
+      <div style="text-align:center;margin-bottom:32px">
+        <span class="eyebrow">FREE FOR FIRST 500 HOMES</span>
+        <h2 class="h-section" style="margin:14px 0 8px">Claim your <span class="grad-text">free demo kit</span></h2>
+        <p class="lead" style="margin:0 auto">Test D'Cal in your home for 7 days. Zero cost, zero commitment.</p>
+      </div>
+
+      {% form 'contact', data-multi-form: true %}
+        {%- comment -%} Honeypot: hidden from people, traps bots. Blocked client-side in premium-custom.js. {%- endcomment -%}
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+          <label>Do not fill this field if you are human
+            <input type="text" name="contact[company_site]" data-honeypot tabindex="-1" autocomplete="off">
+          </label>
+        </div>
+        <div data-step>
+          <div style="margin-bottom:8px;color:#64748B;font-size:13px;font-weight:600">STEP 1 OF 2 · ABOUT YOU</div>
+          <div style="height:4px;background:#E2E8F0;border-radius:99px;margin-bottom:24px"><div style="width:50%;height:100%;background:linear-gradient(90deg,#0EA5E9,#00C7B7);border-radius:99px"></div></div>
+          <input type="text" name="contact[name]" aria-label="Full name" placeholder="Full name *" required style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px">
+          <input type="tel" name="contact[phone]" aria-label="Phone number" placeholder="Phone number *" pattern="[0-9]{10}" required style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px">
+          <input type="email" name="contact[email]" aria-label="Email (optional)" placeholder="Email (optional)" style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px">
+          <input type="number" name="contact[age]" aria-label="Age" placeholder="Age *" min="18" max="100" required style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:24px;font-size:15px">
+          <button type="button" data-next class="btn btn-primary magnetic" style="width:100%;justify-content:center">Continue {% render 'icon', name: 'arrow-right', size: 16 %}</button>
+        </div>
+
+        <div data-step>
+          <div style="margin-bottom:8px;color:#64748B;font-size:13px;font-weight:600">STEP 2 OF 2 · DELIVERY</div>
+          <div style="height:4px;background:#E2E8F0;border-radius:99px;margin-bottom:24px"><div style="width:100%;height:100%;background:linear-gradient(90deg,#0EA5E9,#00C7B7);border-radius:99px"></div></div>
+
+          <input type="text" name="contact[address]" aria-label="Street address" placeholder="Street address *" required style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px;background:#fff">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <input type="text" name="contact[city]" aria-label="City" placeholder="City *" required list="indian-cities" autocomplete="off" style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff">
+
+            <select name="contact[state]" aria-label="State" required style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff;color:#64748B;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 16px center">
+              <option value="">Select state *</option>
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh</option>
+              <option>Assam</option>
+              <option>Bihar</option>
+              <option>Chhattisgarh</option>
+              <option>Goa</option>
+              <option>Gujarat</option>
+              <option>Haryana</option>
+              <option>Himachal Pradesh</option>
+              <option>Jharkhand</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Manipur</option>
+              <option>Meghalaya</option>
+              <option>Mizoram</option>
+              <option>Nagaland</option>
+              <option>Odisha</option>
+              <option>Punjab</option>
+              <option>Rajasthan</option>
+              <option>Sikkim</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+              <option>Tripura</option>
+              <option>Uttar Pradesh</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal</option>
+              <option disabled>──── UNION TERRITORIES ────</option>
+              <option>Andaman and Nicobar Islands</option>
+              <option>Chandigarh</option>
+              <option>Dadra and Nagar Haveli and Daman and Diu</option>
+              <option>Delhi</option>
+              <option>Jammu and Kashmir</option>
+              <option>Ladakh</option>
+              <option>Lakshadweep</option>
+              <option>Puducherry</option>
+            </select>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <input type="text" name="contact[country]" value="India" aria-label="Country" readonly style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#F8FAFC;color:#94A3B8">
+            <input type="text" name="contact[pincode]" aria-label="PIN code" placeholder="PIN code *" pattern="[0-9]{6}" required style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff">
+          </div>
+
+          <select name="contact[source]" aria-label="How did you hear about us?" style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px;background:#fff;color:#64748B;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 16px center">
+            <option value="">How did you hear about us?</option>
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>YouTube</option>
+            <option>Google Search</option>
+            <option>Friend / Family</option>
+            <option>WhatsApp Group</option>
+            <option>Newspaper / Magazine</option>
+            <option>Other</option>
+          </select>
+
+          <select name="contact[home_type]" aria-label="Home type" style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:24px;font-size:15px;background:#fff;color:#64748B;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 16px center">
+            <option value="">Home type (helps us size your kit)</option>
+            <option>1 BHK Apartment</option>
+            <option>2 BHK Apartment</option>
+            <option>3 BHK Apartment</option>
+            <option>4+ BHK / Villa</option>
+            <option>Independent House</option>
+            <option>Bungalow</option>
+            <option>Commercial / Office</option>
+          </select>
+
+          <div style="display:flex;gap:12px">
+            <button type="button" data-prev class="btn btn-ghost" style="flex:1;justify-content:center">{% render 'icon', name: 'arrow-left', size: 16 %} Back</button>
+            <button type="submit" class="btn btn-primary magnetic" style="flex:2;justify-content:center">Claim free kit {% render 'icon', name: 'sparkles', size: 16 %}</button>
+          </div>
+        </div>
+
+        {% if form.posted_successfully? %}
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:#ECFDF5;border:1px solid #6EE7B7;padding:20px;border-radius:14px;margin-top:20px;color:#065F46;font-weight:600;text-align:center">{% render 'icon', name: 'check', size: 18 %} Thank you! Our team will dispatch your kit within 48 hours.</div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+<datalist id="indian-cities"></datalist>
+<script>
+  const cities=["Mumbai","Delhi","Bangalore","Hyderabad","Chennai","Kolkata","Pune","Ahmedabad","Surat","Jaipur","Lucknow","Kanpur","Nagpur","Indore","Thane","Bhopal","Visakhapatnam","Patna","Vadodara","Ghaziabad","Ludhiana","Agra","Nashik","Faridabad","Meerut","Rajkot","Kalyan-Dombivli","Vasai-Virar","Varanasi","Srinagar","Aurangabad","Dhanbad","Amritsar","Navi Mumbai","Allahabad","Ranchi","Howrah","Coimbatore","Jabalpur","Gwalior","Vijayawada","Jodhpur","Madurai","Raipur","Kota","Guwahati","Chandigarh","Solapur","Hubballi","Bareilly","Mysore","Tiruchirappalli","Tiruppur","Gurgaon","Aligarh","Jalandhar","Bhubaneswar","Salem","Warangal","Thiruvananthapuram","Saharanpur","Gorakhpur","Guntur","Bikaner","Amravati","Noida","Jamshedpur","Bhilai","Cuttack","Firozabad","Kochi","Nellore","Bhavnagar","Dehradun","Durgapur","Asansol","Rourkela","Nanded","Kolhapur","Ajmer","Akola","Gulbarga","Jamnagar","Ujjain","Siliguri","Jhansi","Jammu","Mangalore","Erode","Belgaum","Tirunelveli","Malegaon","Gaya","Jalgaon","Udaipur","Tirupati","Davangere","Kozhikode","Kurnool","Bellary","Patiala","Agartala","Bhagalpur","Muzaffarnagar","Latur","Dhule","Rohtak","Bhilwara","Berhampur","Muzaffarpur","Ahmednagar","Mathura","Kollam","Sambalpur","Bilaspur","Shahjahanpur","Satara","Bijapur","Rampur","Shivamogga","Chandrapur","Junagadh","Thrissur","Alwar","Kakinada","Nizamabad","Parbhani","Tumkur","Khammam","Panipat","Darbhanga","Aizawl","Dewas","Ichalkaranji","Karnal","Bathinda","Jalna","Eluru","Purnia","Satna","Sonipat","Sagar","Durg","Imphal","Ratlam","Hapur","Anantapur","Arrah","Karimnagar","Etawah","Ambernath","Bharatpur","Begusarai","Gandhinagar","Puducherry","Sikar","Thoothukudi","Rewa","Mirzapur","Raichur","Pali","Ramagundam","Haridwar","Vijayanagaram","Katihar","Nagercoil","Sri Ganganagar","Thanjavur","Bulandshahr","Singrauli","Nadiad","Secunderabad","Yamunanagar","Bidar","Munger","Panchkula","Burhanpur","Kharagpur","Dindigul","Gandhidham","Hospet","Malda","Ongole","Deoghar","Chapra","Haldia","Khandwa","Nandyal","Morena","Amroha","Anand","Bhind","Bhusawal","Navsari","Sasaram","Hajipur","Port Blair","Gangtok","Shillong","Kohima","Itanagar","Daman","Diu","Kavaratti","Silvassa","Leh","Kargil"];
+  const dl=document.getElementById('indian-cities');
+  cities.forEach(c=>{const o=document.createElement('option');o.value=c;dl.appendChild(o);});
+</script>
+
+{% schema %}
+{"name":"Premium Demo Form","presets":[{"name":"Premium Demo Form"}]}
+{% endschema %}

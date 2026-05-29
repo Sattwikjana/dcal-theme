@@ -1,0 +1,57 @@
+<section id="science" class="sec" style="background:#0B1220;color:#fff">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center" class="sci-grid">
+      <div>
+        <span class="eyebrow" data-reveal style="background:rgba(0,199,183,.15);color:#5EEAD4">LAB CERTIFIED</span>
+        <h2 class="h-section" data-reveal data-reveal-delay="1" style="color:#fff;margin:20px 0">
+          The science you can <span class="grad-text">see & feel</span>.
+        </h2>
+        <p class="lead" data-reveal data-reveal-delay="2" style="color:#94A3B8">
+          Independent NABL labs ran 1,200+ hours of heating-coil scale tests. Drag the slider to see the difference.
+        </p>
+        <div style="margin-top:32px;display:grid;gap:14px" data-reveal data-reveal-delay="3">
+          {% for block in section.blocks %}
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00C7B7,#0EA5E9);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff">{% render 'icon', name: 'check', size: 16 %}</div>
+            <div><div style="font-weight:600;font-size:17px">{{ block.settings.title }}</div><div style="color:#94A3B8;font-size:14px">{{ block.settings.text }}</div></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="2">
+        <div class="compare">
+          {% if section.settings.before != blank %}<img src="{{ section.settings.before | image_url: width: 1200 }}" width="1200" height="750" loading="lazy" alt="Before D'Cal treatment">{% endif %}
+{% if section.settings.after != blank %}<img class="after" src="{{ section.settings.after | image_url: width: 1200 }}" width="1200" height="750" loading="lazy" alt="After D'Cal treatment">{% endif %}
+          <div class="handle"><div class="knob">{% render 'icon', name: 'move-horizontal', size: 20 %}</div></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;color:#94A3B8;font-size:13px;font-weight:600">
+          <span>WITHOUT D'CAL</span><span>WITH D'CAL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>@media(max-width:900px){.sci-grid{grid-template-columns:1fr !important}}</style>
+
+{% schema %}
+{
+  "name":"Premium Science",
+  "settings":[
+    {"type":"image_picker","id":"before","label":"Before image"},
+    {"type":"image_picker","id":"after","label":"After image"}
+  ],
+  "blocks":[{
+    "type":"fact","name":"Fact",
+    "settings":[
+      {"type":"text","id":"title","label":"Title","default":"99% scale reduction"},
+      {"type":"text","id":"text","label":"Text","default":"Verified by NABL-accredited testing across 6 cities."}
+    ]
+  }],
+  "presets":[{"name":"Premium Science","blocks":[
+    {"type":"fact"},
+    {"type":"fact","settings":{"title":"Food-grade certified","text":"BPA-free polymer. Safe for drinking water lines."}},
+    {"type":"fact","settings":{"title":"Zero electricity","text":"Patented sequestering tech — runs on water pressure alone."}}
+  ]}]
+}
+{% endschema %}

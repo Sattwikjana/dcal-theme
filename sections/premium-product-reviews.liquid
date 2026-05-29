@@ -1,0 +1,112 @@
+<section class="pp-pr-sec">
+  <div class="container">
+    <div class="pp-pr-head">
+      <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+      <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:18px 0 12px">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="lead" data-reveal data-reveal-delay="2" style="margin:0 auto">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    {%- capture star_filled -%}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{%- endcapture -%}
+    {%- capture star_empty -%}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{%- endcapture -%}
+
+    <div class="marquee pp-pr-marquee" role="region" aria-label="Customer reviews">
+      <div class="marquee__track pp-pr-track">
+        {% for pass in (1..2) %}
+          {% for block in section.blocks %}
+            {%- assign r = block.settings.rating | default: 5 | at_most: 5 | at_least: 1 -%}
+            <article class="pp-pr-card" {% if pass == 2 %}aria-hidden="true"{% endif %}>
+              <div class="pp-pr-top">
+                <div class="pp-pr-stars" aria-label="{{ r }} out of 5 stars">
+                  {% for i in (1..5) %}{% if i <= r %}{{ star_filled }}{% else %}{{ star_empty }}{% endif %}{% endfor %}
+                </div>
+                {% if block.settings.verified %}
+                  <span class="pp-pr-chip">VERIFIED BUYER</span>
+                {% endif %}
+              </div>
+              {% if block.settings.title != blank %}
+                <h3 class="pp-pr-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              <p class="pp-pr-body">{{ block.settings.body }}</p>
+              <div class="pp-pr-foot">
+                <div class="pp-pr-avatar" aria-hidden="true">{{ block.settings.name | slice: 0 | upcase }}</div>
+                <div class="pp-pr-meta">
+                  <div class="pp-pr-name">{{ block.settings.name }}</div>
+                  <div class="pp-pr-loc">{{ block.settings.location }}</div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pp-pr-sec{background:linear-gradient(180deg,#fff 0%,#F0FDFA 100%);padding:80px 0;position:relative;overflow:hidden}
+  .pp-pr-head{text-align:center;max-width:720px;margin:0 auto 48px}
+
+  .pp-pr-marquee{padding:4px 0}
+  .pp-pr-track{gap:24px;animation-duration:40s}
+  .pp-pr-marquee:hover .pp-pr-track{animation-play-state:paused}
+
+  .pp-pr-card{flex:0 0 380px;padding:28px;border-radius:24px;background:linear-gradient(160deg,#F8FAFC,#fff);border:1px solid #E2E8F0;box-shadow:0 14px 30px -20px rgba(2,8,23,.15);display:flex;flex-direction:column}
+  .pp-pr-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .pp-pr-stars{display:inline-flex;gap:2px;line-height:0}
+  .pp-pr-chip{font-size:10px;font-weight:700;letter-spacing:.08em;color:#0F766E;background:#D1FAE5;padding:5px 10px;border-radius:99px;white-space:nowrap}
+
+  .pp-pr-title{font-size:16px;font-weight:700;color:#0B1220;margin:14px 0 8px;letter-spacing:-.01em}
+  .pp-pr-body{font-size:15px;line-height:1.6;color:#1F2937;margin:0 0 18px;flex:1}
+
+  .pp-pr-foot{display:flex;gap:12px;align-items:center;margin-top:auto}
+  .pp-pr-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0EA5E9,#00C7B7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:15px}
+  .pp-pr-meta{min-width:0}
+  .pp-pr-name{font-weight:600;font-size:14px;color:#0B1220}
+  .pp-pr-loc{font-size:12px;color:#64748B}
+
+  @media(max-width:768px){
+    .pp-pr-sec{padding:60px 0}
+    .pp-pr-card{flex-basis:300px;padding:22px}
+    .pp-pr-track{gap:18px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .pp-pr-track{animation:none}
+  }
+</style>
+
+{% schema %}
+{
+  "name":"Premium Product Reviews",
+  "max_blocks":16,
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"FEATURED REVIEWS"},
+    {"type":"text","id":"heading","label":"Heading (HTML allowed)","default":"What customers say about <span class='grad-text'>D'Cal</span>"},
+    {"type":"textarea","id":"subheading","label":"Subheading","default":"Real experiences from verified buyers across India"}
+  ],
+  "blocks":[{
+    "type":"review","name":"Review card",
+    "settings":[
+      {"type":"range","id":"rating","label":"Rating","min":1,"max":5,"step":1,"default":5},
+      {"type":"checkbox","id":"verified","label":"Show \"Verified Buyer\" chip","default":true},
+      {"type":"text","id":"title","label":"Review title","default":"Great product"},
+      {"type":"textarea","id":"body","label":"Review body","default":"Write the customer's review here."},
+      {"type":"text","id":"name","label":"Reviewer name","default":"Reviewer Name"},
+      {"type":"text","id":"location","label":"Location / source","default":"City · Verified Buyer"}
+    ]
+  }],
+  "presets":[{"name":"Premium Product Reviews","blocks":[
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"My hair fall reduced dramatically","body":"After 6 weeks with D'Cal, my hair fall reduced by 70%. My skin doesn't feel chalky after bath. Worth every rupee.","name":"Priya Sharma","location":"Mumbai · Verified Buyer"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Engineer-verified — it really works","body":"I'm a mechanical engineer. I was skeptical. After 4 months I dismantled my washing machine drum. Zero scale. The science is real.","name":"Rohan Mehta","location":"Bangalore · Amazon Verified"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"15-minute install changed everything","body":"Installed on my 1000L overhead tank in 12 minutes. No plumber needed. White scale on bathroom tiles vanished within 3 weeks.","name":"Anita Kumar","location":"Delhi · Flipkart Verified"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"I install D'Cal in every flat I deliver","body":"I'm a builder. D'Cal is now standard in every apartment I hand over. Customer complaints about water damage dropped to zero.","name":"Vikram Joshi","location":"Pune · Builder Partner"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Geyser bill dropped 12%","body":"IFB technician opened our 4-year-old washing machine and said the drum was the cleanest he'd ever seen. Pays for itself.","name":"Sneha Reddy","location":"Hyderabad · Google Review"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Bathroom looks new again","body":"Six months in. Haven't scrubbed limescale off taps once. Bathroom looks like it did when it was new.","name":"Karthik Iyer","location":"Chennai · Verified Buyer"}},
+    {"type":"review","settings":{"rating":4,"verified":true,"title":"Eczema symptoms much better","body":"My daughter has eczema. Within 2 months of installing D'Cal, her flare-ups reduced significantly. Shipping took 7 days, dropping 1 star for that.","name":"Ananya Singh","location":"Kolkata · Amazon Verified"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Works on heavy borewell water","body":"Our borewell water has TDS of around 950. Most softeners give up. D'Cal handles it. Bathroom is finally usable.","name":"Manoj Patel","location":"Ahmedabad · Verified Buyer"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Detergent use cut in half","body":"We were spending ₹800/month on detergent for a family of 5. Down to ₹400 now because soft water lathers properly. ROI in 5 months.","name":"Deepika Krishnan","location":"Coimbatore · Verified Buyer"}},
+    {"type":"review","settings":{"rating":5,"verified":true,"title":"Glassware stopped getting cloudy","body":"We host dinner parties often. Our glassware always looked cloudy after dishwasher. After D'Cal — crystal clear. Embarrassing problem solved.","name":"Arjun Kapoor","location":"Gurugram · Google Review"}}
+  ]}]
+}
+{% endschema %}

@@ -1,0 +1,210 @@
+<footer class="pp-ft" aria-label="Site footer">
+  <div class="container">
+    <div class="pp-ft-grid">
+
+      <div class="pp-ft-brand">
+        {% if section.settings.logo != blank %}
+          <img class="pp-ft-logo"
+               src="{{ section.settings.logo | image_url: width: 240 }}"
+               width="240" height="60" loading="lazy"
+               alt="{{ section.settings.brand | escape }}">
+        {% endif %}
+        <div class="pp-ft-brand-name grad-text">{{ section.settings.brand }}</div>
+        {% if section.settings.tagline != blank %}
+          <p class="pp-ft-tagline">{{ section.settings.tagline }}</p>
+        {% endif %}
+        <div class="pp-ft-socials">
+          {% for block in section.blocks %}{% if block.type == 'social' and block.settings.link != blank %}
+            {%- assign net = block.settings.icon -%}
+            {%- assign label = 'Social link' -%}
+            {%- case net -%}
+              {%- when 'facebook' -%}{%- assign label = 'Facebook' -%}
+              {%- when 'instagram' -%}{%- assign label = 'Instagram' -%}
+              {%- when 'linkedin' -%}{%- assign label = 'LinkedIn' -%}
+              {%- when 'youtube' -%}{%- assign label = 'YouTube' -%}
+              {%- when 'twitter' -%}{%- assign label = 'X (Twitter)' -%}
+            {%- endcase -%}
+            <a href="{{ block.settings.link }}"
+               target="_blank" rel="noopener"
+               aria-label="{{ section.settings.brand | escape }} on {{ label }}">
+              {% render 'icon', name: net, size: 18 %}
+            </a>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
+
+      <nav class="pp-ft-col" aria-label="{{ section.settings.shop_title | escape }}">
+        <h3 class="pp-ft-col-title">{{ section.settings.shop_title }}</h3>
+        <ul class="pp-ft-links">
+          <li><a href="{{ routes.root_url }}">{{ section.settings.shop_home }}</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">{{ section.settings.shop_all }}</a></li>
+          <li><a href="{{ routes.collections_url }}/bestsellers">{{ section.settings.shop_trending }}</a></li>
+          <li><a href="{{ routes.cart_url }}">{{ section.settings.shop_cart }}</a></li>
+        </ul>
+      </nav>
+
+      <nav class="pp-ft-col" aria-label="{{ section.settings.help_title | escape }}">
+        <h3 class="pp-ft-col-title">{{ section.settings.help_title }}</h3>
+        <ul class="pp-ft-links">
+          <li><a href="/pages/about">{{ section.settings.help_about }}</a></li>
+          <li><a href="{{ section.settings.help_track_url | default: '/pages/track-order' }}">{{ section.settings.help_track }}</a></li>
+          <li><a href="/pages/shipping-returns">{{ section.settings.help_shipping }}</a></li>
+          <li><a href="/pages/faq">{{ section.settings.help_faq }}</a></li>
+          <li><a href="/policies/privacy-policy">{{ section.settings.help_privacy }}</a></li>
+          <li><a href="/pages/legal">{{ section.settings.help_legal }}</a></li>
+          <li><a href="/pages/contact">{{ section.settings.help_contact }}</a></li>
+        </ul>
+      </nav>
+
+      <div class="pp-ft-col pp-ft-entity">
+        <h3 class="pp-ft-col-title">{{ section.settings.entity_eyebrow }}</h3>
+        <div class="pp-ft-entity-name">{{ section.settings.entity_name }}</div>
+        <dl class="pp-ft-entity-dl">
+          {% if section.settings.address != blank %}
+            <dt class="pp-ft-entity-dt">{{ section.settings.address_label }}</dt>
+            <dd class="pp-ft-entity-dd">{{ section.settings.address | newline_to_br }}</dd>
+          {% endif %}
+          {% if section.settings.gstin != blank %}
+            <dt class="pp-ft-entity-dt">GSTIN</dt>
+            <dd class="pp-ft-entity-dd">{{ section.settings.gstin }}</dd>
+          {% endif %}
+          {% if section.settings.iec != blank %}
+            <dt class="pp-ft-entity-dt">IEC</dt>
+            <dd class="pp-ft-entity-dd">{{ section.settings.iec }}</dd>
+          {% endif %}
+        </dl>
+        <div class="pp-ft-entity-contacts">
+          {% if section.settings.email != blank %}
+            <a href="mailto:{{ section.settings.email }}" aria-label="Email {{ section.settings.brand | escape }}">
+              {% render 'icon', name: 'mail', size: 14 %}<span>{{ section.settings.email }}</span>
+            </a>
+          {% endif %}
+          {% if section.settings.phone != blank %}
+            <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '-', '' }}" aria-label="Call {{ section.settings.brand | escape }}">
+              {% render 'icon', name: 'phone', size: 14 %}<span>{{ section.settings.phone }}</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-ft-bottom">
+      <div class="pp-ft-copyright">{{ section.settings.copyright }}</div>
+      <div class="pp-ft-made">
+        <span class="pp-ft-tricolor" aria-hidden="true"><span></span><span></span><span></span></span>
+        {{ section.settings.made_in_text }}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pp-ft{background:#0B1220;color:#fff;padding:80px 0 30px}
+  .pp-ft-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:48px;margin-bottom:60px}
+
+  .pp-ft-brand{min-width:0}
+  .pp-ft-logo{height:36px;width:auto;display:block;margin-bottom:14px;object-fit:contain}
+  .pp-ft-brand-name{font-family:'Space Grotesk','Inter',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .pp-ft-tagline{color:#94A3B8;margin:14px 0 24px;font-size:14px;line-height:1.6;max-width:36ch}
+  .pp-ft-socials{display:flex;gap:12px;flex-wrap:wrap}
+  .pp-ft-socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);display:inline-flex;align-items:center;justify-content:center;color:#E2E8F0;text-decoration:none;transition:background .25s ease,color .25s ease,transform .25s ease}
+  .pp-ft-socials a:hover{background:linear-gradient(135deg,#00C7B7,#0EA5E9);color:#fff;transform:translateY(-2px)}
+
+  .pp-ft-col{min-width:0}
+  .pp-ft-col-title{font-size:12px;font-weight:700;color:#94A3B8;letter-spacing:.1em;text-transform:uppercase;margin:0 0 18px}
+  .pp-ft-links{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .pp-ft-links a{display:inline-block;color:#E2E8F0;text-decoration:none;font-size:14px;position:relative;transition:color .2s ease;width:fit-content}
+  .pp-ft-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:linear-gradient(135deg,#5EEAD4,#0EA5E9);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  .pp-ft-links a:hover{color:#5EEAD4}
+  .pp-ft-links a:hover::after{transform:scaleX(1)}
+  .pp-ft-links a:focus-visible{outline:2px solid #5EEAD4;outline-offset:3px;border-radius:4px}
+
+  .pp-ft-entity-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:.01em;line-height:1.35}
+  .pp-ft-entity-dl{margin:0;display:grid;gap:4px}
+  .pp-ft-entity-dt{font-size:11px;font-weight:700;color:#64748B;letter-spacing:.08em;text-transform:uppercase;margin-top:10px}
+  .pp-ft-entity-dt:first-of-type{margin-top:0}
+  .pp-ft-entity-dd{font-size:13px;color:#94A3B8;line-height:1.6;margin:0}
+  .pp-ft-entity-contacts{margin-top:16px;display:grid;gap:8px}
+  .pp-ft-entity-contacts a{display:inline-flex;align-items:center;gap:8px;color:#E2E8F0;text-decoration:none;font-size:13px;transition:color .2s ease}
+  .pp-ft-entity-contacts a:hover{color:#5EEAD4;text-decoration:underline}
+  .pp-ft-entity-contacts a:focus-visible{outline:2px solid #5EEAD4;outline-offset:3px;border-radius:4px}
+
+  .pp-ft-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:30px;margin-top:60px;display:flex;justify-content:space-between;align-items:center;color:#64748B;font-size:13px;flex-wrap:wrap;gap:12px}
+  .pp-ft-made{display:inline-flex;align-items:center;gap:10px}
+  .pp-ft-tricolor{display:inline-flex;width:24px;height:16px;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,.12);vertical-align:middle}
+  .pp-ft-tricolor>span{flex:1}
+  .pp-ft-tricolor>span:nth-child(1){background:#FF9933}
+  .pp-ft-tricolor>span:nth-child(2){background:#fff;position:relative}
+  .pp-ft-tricolor>span:nth-child(2)::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;border-radius:50%;border:.75px solid #000080;transform:translate(-50%,-50%)}
+  .pp-ft-tricolor>span:nth-child(3){background:#138808}
+
+  @media(max-width:1000px){.pp-ft-grid{grid-template-columns:1fr 1fr;gap:40px}}
+  @media(max-width:600px){
+    .pp-ft{padding:60px 0 24px}
+    .pp-ft-grid{grid-template-columns:1fr;gap:32px;margin-bottom:40px}
+    .pp-ft-bottom{justify-content:flex-start;margin-top:32px}
+  }
+</style>
+
+{% schema %}
+{
+  "name":"Premium Footer",
+  "settings":[
+    {"type":"header","content":"Brand"},
+    {"type":"image_picker","id":"logo","label":"Brand logo (optional)"},
+    {"type":"text","id":"brand","label":"Brand name","default":"D'Cal"},
+    {"type":"textarea","id":"tagline","label":"Tagline","default":"India's first zero-electricity hard water defense system. A BEFACH 4X Pvt. Ltd. brand."},
+
+    {"type":"header","content":"Shop column"},
+    {"type":"text","id":"shop_title","label":"Column title","default":"SHOP"},
+    {"type":"text","id":"shop_home","label":"Home label","default":"Home"},
+    {"type":"text","id":"shop_all","label":"Shop All label","default":"Shop All"},
+    {"type":"text","id":"shop_trending","label":"Trending label","default":"Trending"},
+    {"type":"text","id":"shop_cart","label":"Cart label","default":"Cart"},
+
+    {"type":"header","content":"Help column"},
+    {"type":"text","id":"help_title","label":"Column title","default":"HELP"},
+    {"type":"text","id":"help_about","label":"About Us label","default":"About Us"},
+    {"type":"text","id":"help_track","label":"Track Order label","default":"Track Order"},
+    {"type":"url","id":"help_track_url","label":"Track Order URL","info":"Defaults to /pages/track-order. Override with an external tracking URL (e.g. Shiprocket) if needed."},
+    {"type":"text","id":"help_shipping","label":"Shipping & Returns label","default":"Shipping & Returns"},
+    {"type":"text","id":"help_faq","label":"FAQ label","default":"FAQ"},
+    {"type":"text","id":"help_privacy","label":"Privacy Policy label","default":"Privacy Policy"},
+    {"type":"text","id":"help_legal","label":"Legal & Compliance label","default":"Legal & Compliance"},
+    {"type":"text","id":"help_contact","label":"Contact label","default":"Contact"},
+
+    {"type":"header","content":"Operating entity"},
+    {"type":"text","id":"entity_eyebrow","label":"Column title","default":"OPERATING ENTITY"},
+    {"type":"text","id":"entity_name","label":"Legal name","default":"BEFACH 4X PRIVATE LIMITED"},
+    {"type":"text","id":"address_label","label":"Address label","default":"Registered Office:"},
+    {"type":"textarea","id":"address","label":"Address","default":"3rd floor, Luxor Park, Banjara Hills Road No. 3, opp. LV Prasad Bus Stand, Hyderabad, Telangana 500034, India"},
+    {"type":"text","id":"gstin","label":"GSTIN","default":"36AAHCB9338E1ZK"},
+    {"type":"text","id":"iec","label":"IEC","default":"AAHCB9338E"},
+    {"type":"text","id":"email","label":"Email","default":"sales@befach.com"},
+    {"type":"text","id":"phone","label":"Phone","default":"+91 70570 53160"},
+
+    {"type":"header","content":"Bottom bar"},
+    {"type":"text","id":"copyright","label":"Copyright text","default":"© 2026 D'Cal · A BEFACH 4X Pvt. Ltd. brand. All rights reserved."},
+    {"type":"text","id":"made_in_text","label":"Made in text","default":"Made in India"}
+  ],
+  "blocks":[
+    {"type":"social","name":"Social link","settings":[
+      {"type":"select","id":"icon","label":"Network","default":"facebook","options":[
+        {"value":"facebook","label":"Facebook"},
+        {"value":"instagram","label":"Instagram"},
+        {"value":"linkedin","label":"LinkedIn"},
+        {"value":"youtube","label":"YouTube"},
+        {"value":"twitter","label":"X (Twitter)"}
+      ]},
+      {"type":"url","id":"link","label":"Profile URL","info":"Leave empty to hide this icon."}
+    ]}
+  ],
+  "presets":[{"name":"Premium Footer","blocks":[
+    {"type":"social","settings":{"icon":"facebook"}},
+    {"type":"social","settings":{"icon":"instagram"}},
+    {"type":"social","settings":{"icon":"linkedin"}},
+    {"type":"social","settings":{"icon":"youtube"}},
+    {"type":"social","settings":{"icon":"twitter"}}
+  ]}]
+}
+{% endschema %}

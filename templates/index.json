@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "premium_hero_84ULJA": {
+      "type": "premium-hero",
+      "name": "Premium Hero",
+      "settings": {
+        "eyebrow": "India's #1 Hard Water Defense System",
+        "heading": "Say goodbye to",
+        "heading_accent": "hard water damage.",
+        "subtext": "Protect your skin, hair, geyser, washing machine and pipes with a zero-electricity, zero-maintenance water softener engineered for Indian homes. Lab-certified. Used by 50,000+ families.",
+        "cta_text": "Get Free Demo Kit →",
+        "cta_link": "#demo-form",
+        "cta2_text": "See the science",
+        "cta2_link": "#science",
+        "hero_image": "shopify://shop_images/photo-1658684765085-deba480d7056.avif"
+      }
+    },
+    "premium_problems_DzbzCd": {
+      "type": "premium-problems",
+      "blocks": {
+        "problem_UAEYMq": {
+          "type": "problem",
+          "settings": {
+            "icon": "droplet",
+            "title": "Hair fall & dry skin",
+            "text": "Calcium clogs follicles, strips natural oils and triggers chronic scalp irritation."
+          }
+        },
+        "problem_KxCdGy": {
+          "type": "problem",
+          "settings": {
+            "icon": "droplet",
+            "title": "White scale everywhere",
+            "text": "Limescale ruins taps, tiles, glassware and shower heads in months."
+          }
+        },
+        "problem_yA6QEq": {
+          "type": "problem",
+          "settings": {
+            "icon": "droplet",
+            "title": "Appliances die early",
+            "text": "Geysers, washing machines and RO membranes lose 40-60% lifespan."
+          }
+        },
+        "problem_FrQWb8": {
+          "type": "problem",
+          "settings": {
+            "icon": "droplet",
+            "title": "Faded clothes",
+            "text": "Detergent doesn't lather. Fabrics turn rough, dull and yellow over time."
+          }
+        }
+      },
+      "block_order": [
+        "problem_UAEYMq",
+        "problem_KxCdGy",
+        "problem_yA6QEq",
+        "problem_FrQWb8"
+      ],
+      "custom_css": [
+        "section h3,section p {color: #fff !important;}",
+        "section .h-section {color: #fff !important;}"
+      ],
+      "name": "Premium Problems",
+      "settings": {}
+    },
+    "premium_products_CJ7WYY": {
+      "type": "premium-products",
+      "blocks": {
+        "product_EhyKUU": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-hard-water-softener",
+            "tag": "Water Softener",
+            "bestseller": true
+          }
+        },
+        "product_mPpNfH": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-tap-filter",
+            "tag": "Premium",
+            "bestseller": false
+          }
+        },
+        "product_NqDKJJ": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-washing-machine-ball",
+            "tag": "Laundry Care",
+            "bestseller": false
+          }
+        },
+        "product_qx6r6y": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-tap-tile-cleaner",
+            "tag": "Cleaning",
+            "bestseller": false
+          }
+        }
+      },
+      "block_order": [
+        "product_EhyKUU",
+        "product_mPpNfH",
+        "product_NqDKJJ",
+        "product_qx6r6y"
+      ],
+      "name": "Premium Products",
+      "settings": {}
+    },
+    "premium_science_BDWfj8": {
+      "type": "premium-science",
+      "blocks": {
+        "fact_NYXXM4": {
+          "type": "fact",
+          "settings": {
+            "title": "99% Scale Reduction ",
+            "text": "Independent NABL-accredited labs across 6 Indian cities verified scale formation drops to under 1%."
+          }
+        },
+        "fact_agaqXR": {
+          "type": "fact",
+          "settings": {
+            "title": "Food-Grade Certified",
+            "text": "BPA-free, FDA-grade polymer. Safe for drinking water lines. Tested for heavy metal leaching."
+          }
+        },
+        "fact_KJrhyC": {
+          "type": "fact",
+          "settings": {
+            "title": "Zero Electricity",
+            "text": "Patented sequestering technology runs on water pressure alone. Works even during power cuts."
+          }
+        }
+      },
+      "block_order": [
+        "fact_NYXXM4",
+        "fact_agaqXR",
+        "fact_KJrhyC"
+      ],
+      "name": "Premium Science",
+      "settings": {}
+    },
+    "premium_reviews_f9rFab": {
+      "type": "premium-reviews",
+      "blocks": {
+        "review_3KCPDd": {
+          "type": "review",
+          "settings": {
+            "review": "My geyser used to need descaling every 90 days. It's been 11 months with D'Cal — coil is still spotless. My water bill dropped 12% because the heater is finally efficient.",
+            "name": "Priya Sharma",
+            "city": "Mumbai · Verified Buyer"
+          }
+        },
+        "review_k49FwY": {
+          "type": "review",
+          "settings": {
+            "review": "My wife noticed her hair fall reduced in 6 weeks. I'm an engineer — I was skeptical. Then I dismantled our washing machine drum. Zero scale. I'm a believer.",
+            "name": "Rohan Mehta",
+            "city": "Bangalore · Amazon Verified"
+          }
+        },
+        "review_hWRcUk": {
+          "type": "review",
+          "settings": {
+            "review": "Installed it on my 1000L tank in 12 minutes flat. No plumber. The white scale on our bathroom tiles literally vanished within 3 weeks of use.",
+            "name": "Anita Kumar",
+            "city": "Delhi · Flipkart Verified"
+          }
+        },
+        "review_8Rqyx7": {
+          "type": "review",
+          "settings": {
+            "review": "build apartments. I now ship D'Cal pre-installed in every flat. Customer complaints about water damage dropped to zero.",
+            "name": "Vikram Joshi",
+            "city": "Pune · Builder Partner"
+          }
+        },
+        "review_MajE4R": {
+          "type": "review",
+          "settings": {
+            "review": "Our IFB technician opened our 4-year-old washing machine and said the drum was the cleanest he'd ever seen. D'Cal pays for itself.",
+            "name": "Sneha Reddy",
+            "city": "Hyderabad · Google Review"
+          }
+        }
+      },
+      "block_order": [
+        "review_3KCPDd",
+        "review_k49FwY",
+        "review_hWRcUk",
+        "review_8Rqyx7",
+        "review_MajE4R"
+      ],
+      "name": "Premium Reviews",
+      "settings": {}
+    },
+    "premium_demo_form_cpXHMt": {
+      "type": "premium-demo-form",
+      "name": "Premium Demo Form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "premium_hero_84ULJA",
+    "premium_problems_DzbzCd",
+    "premium_products_CJ7WYY",
+    "premium_science_BDWfj8",
+    "premium_reviews_f9rFab",
+    "premium_demo_form_cpXHMt"
+  ]
+}

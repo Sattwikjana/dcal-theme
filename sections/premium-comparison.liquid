@@ -1,0 +1,113 @@
+<section class="sec pp-comp-sec">
+  <div class="container">
+    <div class="pp-comp-head">
+      <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+      <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:20px 0 16px">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="lead" data-reveal data-reveal-delay="2" style="margin:0 auto">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    {%- assign col_label = section.settings.col_label -%}
+    {%- assign col_us = section.settings.col_us -%}
+    {%- assign col_them = section.settings.col_them -%}
+
+    <div class="pp-comp-table-wrap" data-reveal>
+      <table class="pp-comp-table">
+        <thead>
+          <tr>
+            <th class="pp-comp-th-label">{{ col_label }}</th>
+            <th class="pp-comp-th-us">{{ col_us }}</th>
+            <th class="pp-comp-th-them">{{ col_them }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+          <tr>
+            <td data-label="{{ col_label | escape }}"><span class="pp-comp-row-label">{{ block.settings.label }}</span></td>
+            <td data-label="{{ col_us | escape }}" class="pp-comp-cell-us"><span class="pp-comp-check">{% render 'icon', name: 'check-circle', size: 16 %}</span>{{ block.settings.us }}</td>
+            <td data-label="{{ col_them | escape }}" class="pp-comp-cell-them"><span class="pp-comp-x">{% render 'icon', name: 'x', size: 16 %}</span>{{ block.settings.them }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if section.settings.banner_text != blank %}
+    <div class="pp-comp-banner" data-reveal>
+      {{ section.settings.banner_text }}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .pp-comp-sec{background:#fff;padding:100px 0}
+  .pp-comp-head{text-align:center;max-width:760px;margin:0 auto 56px}
+
+  .pp-comp-table-wrap{max-width:980px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid #E2E8F0;box-shadow:0 24px 60px -28px rgba(2,8,23,.25)}
+  .pp-comp-table{width:100%;border-collapse:collapse;background:#fff;font-size:15px}
+  .pp-comp-table th{padding:20px 22px;text-align:left;font-weight:700;letter-spacing:.04em;font-size:13px;text-transform:uppercase}
+  .pp-comp-table td{padding:18px 22px;border-top:1px solid #E2E8F0;color:#334155;vertical-align:middle}
+
+  .pp-comp-th-label{background:#F8FAFC;color:#0B1220;width:25%}
+  .pp-comp-th-us{background:linear-gradient(135deg,#00C7B7,#0EA5E9);color:#fff}
+  .pp-comp-th-them{background:#F1F5F9;color:#64748B}
+
+  .pp-comp-row-label{font-weight:700;color:#0B1220;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .pp-comp-cell-us{font-weight:600;color:#0F766E;background:rgba(0,199,183,.05)}
+  .pp-comp-cell-them{color:#64748B}
+  .pp-comp-check{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;border-radius:50%;background:#ECFEFF;color:#00C7B7;vertical-align:middle}
+  .pp-comp-x{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;border-radius:50%;background:#FEE2E2;color:#DC2626;vertical-align:middle}
+
+  .pp-comp-banner{max-width:720px;margin:48px auto 0;padding:20px 28px;border-radius:16px;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;text-align:center;font-weight:700;font-size:clamp(15px,1.6vw,18px);box-shadow:0 20px 44px -16px rgba(220,38,38,.5)}
+
+  @media(max-width:760px){
+    .pp-comp-sec{padding:60px 0}
+    .pp-comp-table-wrap{border-radius:20px;border:none;box-shadow:none;background:transparent}
+    .pp-comp-table{display:block}
+    .pp-comp-table thead{display:none}
+    .pp-comp-table tbody,.pp-comp-table tr{display:block}
+    .pp-comp-table tr{margin-bottom:16px;border-radius:18px;border:1px solid #E2E8F0;overflow:hidden;background:#fff;box-shadow:0 10px 24px -16px rgba(2,8,23,.15)}
+    .pp-comp-table td{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 18px;border-top:1px solid #F1F5F9}
+    .pp-comp-table td:first-child{border-top:none;background:#F8FAFC}
+    .pp-comp-table td::before{content:attr(data-label);font-weight:700;font-size:12px;color:#64748B;letter-spacing:.05em;text-transform:uppercase;flex-shrink:0}
+    .pp-comp-table td:first-child::before{display:none}
+    .pp-comp-table td:first-child .pp-comp-row-label{font-size:15px;letter-spacing:0;text-transform:none}
+  }
+</style>
+
+{% schema %}
+{
+  "name":"Premium Comparison",
+  "max_blocks":10,
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"WHY D'CAL WINS"},
+    {"type":"text","id":"heading","label":"Heading (HTML allowed)","default":"D'Cal vs <span class='grad-text'>traditional softeners</span>"},
+    {"type":"textarea","id":"subheading","label":"Subheading","default":"Same softening, 90% less cost, zero hassle"},
+    {"type":"header","content":"Column headers"},
+    {"type":"text","id":"col_label","label":"First column label","default":"Benefit"},
+    {"type":"text","id":"col_us","label":"D'Cal column label","default":"D'CAL WATER SOFTENER"},
+    {"type":"text","id":"col_them","label":"Other column label","default":"OTHER PRODUCTS"},
+    {"type":"header","content":"Warning banner"},
+    {"type":"text","id":"banner_text","label":"Banner text","default":"Avoid damages that could cost around ₹5 lakhs"}
+  ],
+  "blocks":[{
+    "type":"row","name":"Comparison row",
+    "settings":[
+      {"type":"text","id":"label","label":"Benefit label","default":"COST"},
+      {"type":"text","id":"us","label":"D'Cal value","default":"₹4,500"},
+      {"type":"text","id":"them","label":"Other product value","default":"₹50,000+"}
+    ]
+  }],
+  "presets":[{"name":"Premium Comparison","blocks":[
+    {"type":"row","settings":{"label":"COST","us":"₹4,500","them":"₹50,000+"}},
+    {"type":"row","settings":{"label":"MAINTENANCE","us":"No Maintenance","them":"Required Regularly"}},
+    {"type":"row","settings":{"label":"REGENERATION","us":"No Regeneration","them":"Every Fortnight"}},
+    {"type":"row","settings":{"label":"INSTALLATION","us":"Easy DIY (15 min)","them":"Requires Plumber, Time-Consuming"}},
+    {"type":"row","settings":{"label":"WATER USE","us":"Saves Water, Power & Time","them":"Wastes Water, Requires Power"}},
+    {"type":"row","settings":{"label":"WARRANTY","us":"6-Month Free Replacement","them":"Usually None"}},
+    {"type":"row","settings":{"label":"LIFESPAN","us":"10-12 Months","them":"Varies"}}
+  ]}]
+}
+{% endschema %}

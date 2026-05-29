@@ -1,0 +1,68 @@
+{%- comment -%}
+  Structured data (JSON-LD) for D'Cal.
+  Open Graph + Twitter Card tags are emitted by snippets/meta-tags.liquid; this file adds the
+  Organization + WebSite graph on every page, plus Product data on product pages.
+  Rendered from layout/theme.liquid <head>.
+{%- endcomment -%}
+
+{%- liquid
+  assign logo_url = ''
+  if settings.logo != blank
+    assign logo_url = settings.logo | image_url: width: 400
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": {{ request.origin | json }}{% if logo_url != blank %},
+  "logo": "https:{{ logo_url }}"{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ shop.name | json }},
+  "url": {{ request.origin | json }},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ request.origin }}{{ routes.search_url }}?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{%- if request.page_type == 'product' and product != blank -%}
+  {%- liquid
+    assign pavail = 'https://schema.org/OutOfStock'
+    if product.available
+      assign pavail = 'https://schema.org/InStock'
+    endif
+  -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | truncate: 300 | json }},
+    {% if product.featured_image %}"image": "https:{{ product.featured_image | image_url: width: 1200 }}",{% endif %}
+    {% if product.selected_or_first_available_variant.sku != blank %}"sku": {{ product.selected_or_first_available_variant.sku | json }},{% endif %}
+    "brand": {"@type": "Brand", "name": "D'Cal"},
+    "offers": {
+      "@type": "Offer",
+      "url": "{{ request.origin }}{{ product.url }}",
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": "{{ product.price | divided_by: 100.0 }}",
+      "availability": "{{ pavail }}"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "12840"
+    }
+  }
+  </script>
+{%- endif -%}

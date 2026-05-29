@@ -1,0 +1,3 @@
+templates/*.json
+config/settings_data.json
+sections/*-group.json

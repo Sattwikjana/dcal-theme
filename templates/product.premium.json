@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "premium-product",
+      "blocks": {
+        "faq1": {
+          "type": "faq",
+          "settings": {
+            "q": "How long does shipping take?",
+            "a": "Orders ship within 24 hours and arrive in 3-5 business days across India via DTDC and Bluedart."
+          }
+        },
+        "faq2": {
+          "type": "faq",
+          "settings": {
+            "q": "Is installation included?",
+            "a": "Yes. Our certified plumber installs free within 100km of metro cities. DIY guide included for remote pin codes."
+          }
+        },
+        "faq3": {
+          "type": "faq",
+          "settings": {
+            "q": "What's the warranty?",
+            "a": "Lifetime warranty on the cartridge body. Refill every 12 months."
+          }
+        },
+        "faq4": {
+          "type": "faq",
+          "settings": {
+            "q": "Will it work on borewell water?",
+            "a": "Yes. Tested up to 1200 TDS. We recommend a sediment pre-filter for borewell water."
+          }
+        }
+      },
+      "block_order": [
+        "faq1",
+        "faq2",
+        "faq3",
+        "faq4"
+      ],
+      "settings": {}
+    },
+    "product_reviews": {
+      "type": "premium-product-reviews",
+      "settings": {}
+    },
+    "problems": {
+      "type": "premium-problems",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "premium-reviews",
+      "settings": {}
+    },
+    "form": {
+      "type": "premium-demo-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "product_reviews",
+    "problems",
+    "reviews",
+    "form"
+  ]
+}

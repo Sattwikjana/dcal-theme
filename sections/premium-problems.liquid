@@ -1,0 +1,124 @@
+<section class="sec premium-problems-sec" style="background:#0B1220;color:#fff">
+  <div class="container">
+    <div style="text-align:center;max-width:820px;margin:0 auto 64px">
+      <span class="eyebrow" data-reveal style="background:rgba(0,199,183,.15);color:#5EEAD4">{{ section.settings.eyebrow }}</span>
+      <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:20px 0;color:#fff">
+        {{ section.settings.heading }}
+      </h2>
+      <p class="lead" data-reveal data-reveal-delay="2" style="color:#94A3B8;margin:0 auto">
+        {{ section.settings.subheading }}
+      </p>
+    </div>
+
+    <div class="pp-problems-grid">
+      {% for block in section.blocks %}
+        {%- assign ic = block.settings.icon | default: 'droplet' -%}
+        {%- assign has_img = false -%}
+        {%- if block.settings.image != blank -%}{%- assign has_img = true -%}{%- endif -%}
+      <div class="pp-problem-card tilt{% if has_img %} pp-problem-card-img{% endif %}" data-reveal data-reveal-delay="{% cycle 1,2,3,4 %}">
+        {% if has_img %}
+          <div class="pp-problem-image-wrap">
+            <img class="pp-problem-image"
+                 src="{{ block.settings.image | image_url: width: 800 }}"
+                 width="800" height="500" loading="lazy"
+                 alt="{{ block.settings.title | escape }}">
+            <div class="pp-problem-image-badge" aria-hidden="true">{% render 'icon', name: ic, size: 18 %}</div>
+          </div>
+          <div class="pp-problem-text">
+            <h3 class="pp-problem-title">{{ block.settings.title }}</h3>
+            <p class="pp-problem-body">{{ block.settings.text }}</p>
+          </div>
+        {% else %}
+          <div class="pp-problem-icon">{% render 'icon', name: ic, size: 32 %}</div>
+          <h3 class="pp-problem-title">{{ block.settings.title }}</h3>
+          <p class="pp-problem-body">{{ block.settings.text }}</p>
+        {% endif %}
+        <div class="pp-problem-glow"></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.banner_text != blank %}
+    <div class="pp-problems-banner" data-reveal>
+      <div class="pp-banner-text">{{ section.settings.banner_text }}</div>
+      {% if section.settings.banner_subtext != blank %}
+      <div class="pp-banner-subtext">{{ section.settings.banner_subtext }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .pp-problems-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pp-problem-card{position:relative;overflow:hidden;padding:28px 24px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);min-height:280px}
+  .pp-problem-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(0,199,183,.18),rgba(14,165,233,.12));color:#5EEAD4;margin-bottom:18px}
+  .pp-problem-title{font-size:19px;font-weight:700;margin:0 0 10px;color:#fff;letter-spacing:-.01em}
+  .pp-problem-body{color:#CBD5E1;font-size:14px;line-height:1.6;margin:0}
+  .pp-problem-glow{position:absolute;bottom:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,199,183,.18),transparent 70%);filter:blur(20px);pointer-events:none}
+
+  .pp-problem-card-img{padding:0;display:flex;flex-direction:column;overflow:hidden}
+  .pp-problem-card-img .pp-problem-text{padding:22px 24px 26px}
+  .pp-problem-card-img .pp-problem-title{margin-top:0}
+  .pp-problem-image-wrap{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0F172A}
+  .pp-problem-image{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .pp-problem-card-img:hover .pp-problem-image{transform:scale(1.05)}
+  .pp-problem-image-badge{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00C7B7,#0EA5E9);color:#fff;box-shadow:0 8px 20px -6px rgba(0,199,183,.55);z-index:2}
+
+  .pp-problems-banner{max-width:720px;margin:60px auto 0;padding:24px 32px;border-radius:16px;background:linear-gradient(135deg,#EF4444,#DC2626);box-shadow:0 24px 60px -20px rgba(220,38,38,.55);text-align:center;color:#fff}
+  .pp-banner-text{font-size:clamp(18px,2.2vw,22px);font-weight:700;letter-spacing:-.01em}
+  .pp-banner-subtext{margin-top:6px;font-size:15px;font-weight:500;opacity:.92}
+
+  @media(max-width:1100px){.pp-problems-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:820px){.pp-problems-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.pp-problems-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){.pp-problem-image-wrap{aspect-ratio:4/3}}
+</style>
+
+{% schema %}
+{
+  "name":"Premium Problems",
+  "max_blocks":8,
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE HARD TRUTH"},
+    {"type":"text","id":"heading","label":"Heading (HTML allowed)","default":"You've spent lakhs on your dream house — don't let <span class='grad-text'>hard water</span> spoil it"},
+    {"type":"textarea","id":"subheading","label":"Subheading","default":"82% of Indian homes have hard water. Here's what it's silently destroying every day."},
+    {"type":"header","content":"Bottom CTA banner"},
+    {"type":"text","id":"banner_text","label":"Banner text","default":"Repairs of all this damage could cost around ₹5 lakhs"},
+    {"type":"text","id":"banner_subtext","label":"Banner subtext","default":"One D'Cal cartridge prevents it for ₹4,500"}
+  ],
+  "blocks":[{
+    "type":"problem","name":"Problem card",
+    "settings":[
+      {"type":"image_picker","id":"image","label":"Problem image (optional)","info":"When set, replaces the icon tile with a photo. The icon shrinks to a 40px badge over the top-left of the image."},
+      {"type":"select","id":"icon","label":"Icon","default":"droplet","options":[
+        {"value":"droplet","label":"Water drop (corroded pipes)"},
+        {"value":"circle-dot","label":"Circle dot (stained sinks)"},
+        {"value":"grid-3x3","label":"Grid (scaled tiles)"},
+        {"value":"zap","label":"Lightning (heater)"},
+        {"value":"settings","label":"Settings (faucets)"},
+        {"value":"shower-head","label":"Shower head"},
+        {"value":"user","label":"User (hair)"},
+        {"value":"hand","label":"Hand (skin)"},
+        {"value":"sparkles","label":"Sparkles"},
+        {"value":"shirt","label":"Shirt"},
+        {"value":"shield","label":"Shield"},
+        {"value":"leaf","label":"Leaf"},
+        {"value":"home","label":"Home"}
+      ]},
+      {"type":"text","id":"title","label":"Title","default":"Hard Water Problem"},
+      {"type":"textarea","id":"text","label":"Description","default":"Describe the damage hard water causes in Indian homes."}
+    ]
+  }],
+  "presets":[{"name":"Premium Problems","blocks":[
+    {"type":"problem","settings":{"icon":"droplet","title":"Corroded Pipes","text":"Hard water eats away at your home's plumbing from inside. Iron and rust accumulate, water pressure drops, and pipes need replacement years before their time."}},
+    {"type":"problem","settings":{"icon":"circle-dot","title":"Stained Sinks","text":"Yellow, orange, and brown stains lock into ceramic and stainless steel. No amount of regular cleaning removes them — they're mineral deposits embedded in the surface."}},
+    {"type":"problem","settings":{"icon":"grid-3x3","title":"Scaled Tiles","text":"White limescale film covers your bathroom tiles, glass shower doors, and mirrors. It dulls the shine and looks dirty no matter how often you clean."}},
+    {"type":"problem","settings":{"icon":"zap","title":"Damaged Heater Rod","text":"Your geyser's heating coil becomes encrusted with limescale. Efficiency drops 40% in 18 months, electricity bills spike, and the heater dies years early."}},
+    {"type":"problem","settings":{"icon":"settings","title":"Clogged Faucets","text":"Mineral deposits choke the aerators in your taps. Water pressure drops, spray patterns get uneven, and chrome finishes pit and peel."}},
+    {"type":"problem","settings":{"icon":"shower-head","title":"Weak Showers","text":"Showerheads clog with calcium scale within months. Spray weakens, water sprays sideways, and pressure drops to a trickle."}},
+    {"type":"problem","settings":{"icon":"user","title":"Hair Fall & Damage","text":"Calcium binds to hair, strips natural oils, and clogs follicles. Result: chronic hair fall, dry brittle strands, and scalp irritation that no shampoo can fix."}},
+    {"type":"problem","settings":{"icon":"hand","title":"Rough Dry Skin","text":"Hard water leaves a mineral film on your skin that disrupts moisture barrier. Result: dryness, eczema flare-ups, premature aging, and cracking."}}
+  ]}]
+}
+{% endschema %}

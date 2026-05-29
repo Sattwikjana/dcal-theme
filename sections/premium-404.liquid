@@ -1,0 +1,18 @@
+<section class="sec noise" style="background:linear-gradient(135deg,#ECFEFF 0%,#F0F9FF 60%,#FAF5FF 100%);min-height:70vh;display:flex;align-items:center">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="glass" data-reveal style="max-width:620px;margin:0 auto;padding:56px 40px;text-align:center">
+      <div class="grad-text" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(64px,14vw,140px);font-weight:800;line-height:1;letter-spacing:-.04em">404</div>
+      <h1 class="h-section" style="margin:18px 0 12px">This page softened away.</h1>
+      <p class="lead" style="margin:0 auto 28px">Let's get you home — back to clean, scale-free water.</p>
+      <a href="{{ routes.root_url }}" class="btn btn-primary magnetic" style="justify-content:center">Return home {% render 'icon', name: 'arrow-right', size: 16 %}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Premium 404",
+  "settings": []
+}
+{% endschema %}

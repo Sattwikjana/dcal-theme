@@ -1,0 +1,54 @@
+<section class="sec" style="background:#fff">
+  <div class="container" style="text-align:center;margin-bottom:48px">
+    <span class="eyebrow" data-reveal>LOVED BY 50,000+ HOMES</span>
+    <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:18px 0">
+      4.8 ★ on <span class="grad-text">Amazon · Flipkart · Google</span>
+    </h2>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee__track">
+      {% for block in section.blocks %}
+        <div style="flex:0 0 360px;padding:28px;border-radius:24px;background:linear-gradient(160deg,#F8FAFC,#fff);border:1px solid #E2E8F0">
+          <div style="color:#F59E0B;display:flex;gap:2px;margin-bottom:10px">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 16 %}{% endfor %}</div>
+          <p style="font-size:15px;line-height:1.6;color:#1F2937;margin-bottom:18px">"{{ block.settings.review }}"</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0EA5E9,#00C7B7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">{{ block.settings.name | slice: 0 }}</div>
+            <div><div style="font-weight:600;font-size:14px">{{ block.settings.name }}</div><div style="font-size:12px;color:#64748B">{{ block.settings.city }}</div></div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <div style="flex:0 0 360px;padding:28px;border-radius:24px;background:linear-gradient(160deg,#F8FAFC,#fff);border:1px solid #E2E8F0">
+          <div style="color:#F59E0B;display:flex;gap:2px;margin-bottom:10px">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 16 %}{% endfor %}</div>
+          <p style="font-size:15px;line-height:1.6;color:#1F2937;margin-bottom:18px">"{{ block.settings.review }}"</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0EA5E9,#00C7B7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">{{ block.settings.name | slice: 0 }}</div>
+            <div><div style="font-weight:600;font-size:14px">{{ block.settings.name }}</div><div style="font-size:12px;color:#64748B">{{ block.settings.city }}</div></div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"Premium Reviews",
+  "max_blocks":12,
+  "blocks":[{
+    "type":"review","name":"Review",
+    "settings":[
+      {"type":"textarea","id":"review","label":"Review","default":"My geyser had limescale every 3 months. Six months with D'Cal and it's spotless. Genuinely life-changing."},
+      {"type":"text","id":"name","label":"Name","default":"Priya Sharma"},
+      {"type":"text","id":"city","label":"City","default":"Mumbai · Verified Buyer"}
+    ]
+  }],
+  "presets":[{"name":"Premium Reviews","blocks":[
+    {"type":"review"},{"type":"review","settings":{"name":"Rohan Mehta","city":"Bangalore"}},
+    {"type":"review","settings":{"name":"Anita Kumar","city":"Delhi"}},
+    {"type":"review","settings":{"name":"Vikram Joshi","city":"Pune"}},
+    {"type":"review","settings":{"name":"Sneha Reddy","city":"Hyderabad"}}
+  ]}]
+}
+{% endschema %}
