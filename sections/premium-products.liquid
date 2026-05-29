@@ -1,0 +1,212 @@
+<section class="sec" style="background:linear-gradient(180deg,#fff,#F0FDFA);overflow:hidden">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:48px">
+      <div>
+        <span class="eyebrow" data-reveal>OUR SOLUTIONS</span>
+        <h2 class="h-section" data-reveal data-reveal-delay="1" style="margin:20px 0 0;max-width:600px">
+          Engineered for <span class="grad-text">every drop</span>.
+        </h2>
+      </div>
+      <div class="pp-arrows" style="display:flex;gap:10px">
+        <button type="button" class="pp-arrow-prev" aria-label="Previous" style="width:48px;height:48px;border-radius:50%;border:1.5px solid #E2E8F0;background:#fff;cursor:pointer;color:#0B1220;display:flex;align-items:center;justify-content:center;transition:all .2s">{% render 'icon', name: 'arrow-left', size: 20 %}</button>
+        <button type="button" class="pp-arrow-next" aria-label="Next" style="width:48px;height:48px;border-radius:50%;border:none;background:#0B1220;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s">{% render 'icon', name: 'arrow-right', size: 20 %}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pp-scroller-wrap">
+    <div class="pp-scroller">
+      <div class="pp-edge-spacer" aria-hidden="true"></div>
+      {% for block in section.blocks %}
+        {% assign p = block.settings.product %}
+        {% if p != blank %}
+          <a href="{{ p.url }}" class="pp-card tilt" data-reveal data-reveal-delay="{{ forloop.index }}">
+            <div class="pp-card-inner">
+              <div class="pp-card-media">
+                {% assign card_image = p.featured_media.preview_image | default: p.featured_image %}
+                {% if card_image != blank %}
+                  <img src="{{ card_image | image_url: width: 800 }}" width="800" height="800" loading="lazy" alt="{{ p.title | escape }}">
+                {% else %}
+                  <div style="color:#94A3B8;display:flex;align-items:center;justify-content:center;height:100%">{% render 'icon', name: 'package', size: 72 %}</div>
+                {% endif %}
+                {% if block.settings.bestseller %}
+                  <span class="pp-badge pp-badge-best">BESTSELLER</span>
+                {% endif %}
+                {% if p.compare_at_price > p.price %}
+                  <span class="pp-badge pp-badge-save">SAVE {{ p.compare_at_price | minus: p.price | times: 100 | divided_by: p.compare_at_price }}%</span>
+                {% endif %}
+              </div>
+              <div class="pp-card-tag">{{ p.type | default: block.settings.tag }}</div>
+              <h3 class="pp-card-title">{{ p.title }}</h3>
+              <p class="pp-card-desc">{{ p.description | strip_html | truncate: 110 }}</p>
+              <div class="pp-card-foot">
+                <div>
+                  {% if p.compare_at_price > p.price %}
+                    <div class="pp-card-cprice">{{ p.compare_at_price | money }}</div>
+                  {% endif %}
+                  <div class="pp-card-price">{{ p.price | money }}</div>
+                </div>
+                <span class="btn btn-primary magnetic pp-card-btn">Buy Now {% render 'icon', name: 'arrow-right', size: 16 %}</span>
+              </div>
+            </div>
+          </a>
+        {% else %}
+          <div class="pp-card pp-card--placeholder" data-reveal data-reveal-delay="{{ forloop.index }}">
+            <div class="pp-card-inner">
+              <div class="pp-card-media">
+                <div style="color:#CBD5E1;display:flex;align-items:center;justify-content:center;height:100%">{% render 'icon', name: 'package', size: 72 %}</div>
+              </div>
+              <div class="pp-card-tag">{{ block.settings.tag | default: 'Premium' }}</div>
+              <h3 class="pp-card-title">Product not selected</h3>
+              <p class="pp-card-desc pp-card-desc--placeholder">Select a product in customizer</p>
+              <div class="pp-card-foot">
+                <div>
+                  <div class="pp-card-price" style="color:#CBD5E1">—</div>
+                </div>
+                <span class="btn btn-primary pp-card-btn" style="opacity:.45;pointer-events:none">Buy Now {% render 'icon', name: 'arrow-right', size: 16 %}</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="pp-edge-spacer" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pp-scroller-wrap{position:relative}
+  .pp-scroller{
+    display:flex;gap:24px;overflow-x:auto;scroll-behavior:smooth;
+    padding:10px 0 40px;
+    scrollbar-width:none;-ms-overflow-style:none;
+    cursor:grab;
+  }
+  .pp-scroller::-webkit-scrollbar{display:none}
+  .pp-scroller:active{cursor:grabbing}
+
+  /* Edge spacer aligns first/last card with container edges */
+  .pp-edge-spacer{
+    flex:0 0 max(24px, calc((100vw - 1240px) / 2));
+  }
+
+  /* CARD */
+  .pp-card{
+    flex:0 0 380px;
+    text-decoration:none;color:inherit;
+    scroll-snap-align:start;
+  }
+  .pp-card-inner{
+    padding:28px;background:#fff;border-radius:28px;height:100%;
+    display:flex;flex-direction:column;
+    box-shadow:0 12px 40px -16px rgba(2,8,23,.12);
+    border:1px solid rgba(226,232,240,.6);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .pp-card:hover .pp-card-inner{
+    transform:translateY(-6px);
+    box-shadow:0 28px 60px -20px rgba(2,8,23,.22);
+  }
+  .pp-card-media{
+    aspect-ratio:1;border-radius:20px;
+    background:linear-gradient(135deg,#ECFEFF,#F0F9FF);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;overflow:hidden;position:relative;
+  }
+  .pp-card-media img{
+    width:100%;height:100%;object-fit:contain;
+    transition:transform .5s ease;
+  }
+  .pp-card:hover .pp-card-media img{transform:scale(1.05)}
+
+  .pp-badge{
+    position:absolute;top:14px;padding:6px 12px;border-radius:99px;
+    font-size:11px;font-weight:700;letter-spacing:.05em;
+  }
+  .pp-badge-best{left:14px;background:#FEF3C7;color:#92400E}
+  .pp-badge-save{right:14px;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff}
+
+  .pp-card-tag{
+    font-size:12px;font-weight:700;color:#0F766E;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .pp-card-title{
+    font-size:22px;font-weight:700;line-height:1.25;
+    margin-bottom:10px;color:#0B1220;
+  }
+  .pp-card-desc{
+    color:#64748B;font-size:14px;line-height:1.6;
+    margin-bottom:20px;flex-grow:1;
+  }
+  .pp-card-foot{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:20px;border-top:1px solid #E2E8F0;gap:12px;
+  }
+  .pp-card-cprice{font-size:13px;color:#94A3B8;text-decoration:line-through}
+  .pp-card-price{font-size:24px;font-weight:800;color:#0B1220}
+  .pp-card-btn{padding:12px 22px;font-size:14px;border-radius:99px}
+
+  .pp-card--placeholder .pp-card-inner{border-style:dashed}
+  .pp-card-desc--placeholder{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:#94A3B8;font-style:italic;
+  }
+
+  /* ARROWS */
+  .pp-arrow-prev:hover,.pp-arrow-next:hover{transform:translateY(-2px)}
+  .pp-arrow-prev:hover{background:#F8FAFC}
+  .pp-arrow-next:hover{background:#1E293B}
+
+  /* MOBILE */
+  @media(max-width:900px){
+    .pp-card{flex:0 0 320px}
+    .pp-edge-spacer{flex:0 0 24px}
+  }
+  @media(max-width:600px){
+    .pp-card{flex:0 0 85%}
+    .pp-arrows{display:none}
+  }
+</style>
+
+<script>
+(function(){
+  const wrap = document.currentScript.closest('section');
+  const scroller = wrap.querySelector('.pp-scroller');
+  const prev = wrap.querySelector('.pp-arrow-prev');
+  const next = wrap.querySelector('.pp-arrow-next');
+  if(!scroller || !prev || !next) return;
+  const step = 380 + 24;
+  prev.addEventListener('click', () => scroller.scrollBy({left: -step, behavior: 'smooth'}));
+  next.addEventListener('click', () => scroller.scrollBy({left: step, behavior: 'smooth'}));
+
+  // Drag-to-scroll
+  let isDown = false, startX, scrollLeft;
+  scroller.addEventListener('mousedown', e => {
+    if(e.target.closest('a')) return; // don't drag when clicking a card link directly
+    isDown = true; startX = e.pageX - scroller.offsetLeft; scrollLeft = scroller.scrollLeft;
+  });
+  scroller.addEventListener('mouseleave', () => isDown = false);
+  scroller.addEventListener('mouseup', () => isDown = false);
+  scroller.addEventListener('mousemove', e => {
+    if(!isDown) return;
+    e.preventDefault();
+    scroller.scrollLeft = scrollLeft - (e.pageX - scroller.offsetLeft - startX);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name":"Premium Products",
+  "max_blocks":12,
+  "blocks":[{
+    "type":"product","name":"Product card",
+    "settings":[
+      {"type":"product","id":"product","label":"Pick a product"},
+      {"type":"text","id":"tag","label":"Fallback tag (if product type empty)","default":"Premium"},
+      {"type":"checkbox","id":"bestseller","label":"Show BESTSELLER badge","default":false}
+    ]
+  }],
+  "presets":[{"name":"Premium Products","blocks":[{"type":"product"},{"type":"product"},{"type":"product"},{"type":"product"}]}]
+}
+{% endschema %}
