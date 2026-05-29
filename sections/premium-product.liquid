@@ -164,6 +164,40 @@
             </details>
           {% endfor %}
         </div>
+
+        <!-- ============ MORE PRODUCTS — fills the right column under the FAQ ============ -->
+        {%- liquid
+          assign rel = section.settings.related_collection
+          if rel != blank
+            assign rel_products = rel.products
+          else
+            assign rel_products = collections.all.products
+          endif
+        -%}
+        {%- assign more_shown = 0 -%}
+        {%- assign more_total = 0 -%}
+        {%- for p in rel_products limit: 24 -%}{%- if p.id != product.id -%}{%- assign more_total = more_total | plus: 1 -%}{%- endif -%}{%- endfor -%}
+        {%- if more_total > 0 -%}
+        <div class="pp-more">
+          <div class="pp-more-head">More from D'Cal</div>
+          <div class="pp-more-grid">
+            {%- for p in rel_products limit: 24 -%}
+              {%- if p.id != product.id and more_shown < 4 -%}
+                {%- assign more_shown = more_shown | plus: 1 -%}
+                <a href="{{ p.url }}" class="pp-more-card" aria-label="{{ p.title | escape }}">
+                  <div class="pp-more-img">
+                    {% if p.featured_image %}<img src="{{ p.featured_image | image_url: width: 400 }}" width="400" height="400" loading="lazy" alt="{{ p.title | escape }}">{% else %}{% render 'icon', name: 'package', size: 30 %}{% endif %}
+                    {% if p.compare_at_price > p.price %}<span class="pp-more-badge">SALE</span>{% endif %}
+                  </div>
+                  {% if p.type != blank %}<div class="pp-more-type">{{ p.type }}</div>{% endif %}
+                  <div class="pp-more-title">{{ p.title }}</div>
+                  <div class="pp-more-price">{{ p.price | money }}{% if p.compare_at_price > p.price %}<span class="pp-more-was">{{ p.compare_at_price | money }}</span>{% endif %}</div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
       </div>
     </div>
 
@@ -203,6 +237,21 @@
   /* Variant radio buttons */
   label input[type="radio"]:checked + span{border-color:#00B4D8 !important;background:linear-gradient(135deg,#ECF9FF,#E3F4FB) !important;color:#0077B6 !important}
   label:hover span{border-color:#94A3B8}
+  /* MORE PRODUCTS — right-column cross-sell (fills blank space under FAQ) */
+  .pp-more{margin-top:40px;padding-top:28px;border-top:1px solid #E2E8F0}
+  .pp-more-head{font-size:13px;font-weight:700;letter-spacing:.08em;color:#0077B6;margin-bottom:16px;text-transform:uppercase}
+  .pp-more-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .pp-more-card{display:block;background:#fff;border:1px solid #E2E8F0;border-radius:18px;padding:12px;text-decoration:none;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .pp-more-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -18px rgba(2,42,90,.28);border-color:#90E0EF}
+  .pp-more-img{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#ECF9FF,#E3F4FB);display:flex;align-items:center;justify-content:center;margin-bottom:10px;color:#94A3B8}
+  .pp-more-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
+  .pp-more-card:hover .pp-more-img img{transform:scale(1.06)}
+  .pp-more-badge{position:absolute;top:8px;left:8px;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:99px}
+  .pp-more-type{font-size:11px;font-weight:600;color:#94A3B8;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+  .pp-more-title{font-size:13px;font-weight:700;color:#0B1220;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
+  .pp-more-price{font-size:14px;font-weight:800;color:#0077B6}
+  .pp-more-was{font-size:12px;color:#94A3B8;text-decoration:line-through;font-weight:600;margin-left:6px}
+  @media(max-width:520px){.pp-more-grid{grid-template-columns:1fr 1fr}}
   /* Judge.me brand overrides */
   .jdgm-prev-badge__stars{color:#F59E0B !important}
   .jdgm-rev__author{font-weight:700 !important}
@@ -213,6 +262,10 @@
 {% schema %}
 {
   "name":"Premium Product",
+  "settings":[
+    {"type":"header","content":"More products (right column)"},
+    {"type":"collection","id":"related_collection","label":"Collection to pull from","info":"Shows up to 4 other products under the FAQ. Leave empty to use all store products."}
+  ],
   "blocks":[{
     "type":"faq","name":"FAQ",
     "settings":[
