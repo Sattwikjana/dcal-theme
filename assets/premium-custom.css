@@ -24,13 +24,31 @@
 html{background:var(--foam)}
 body{
   font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);scroll-behavior:smooth;
-  /* OCEAN DESCENT — white surface up top, deepening to ocean below (immersive, light enough for text) */
-  background:linear-gradient(180deg,#FFFFFF 0%,#F4FBFE 16%,#E9F6FC 40%,#D8F1F9 64%,#C5EBF6 84%,#B5E6F3 100%);
-  background-attachment:fixed;background-repeat:no-repeat;background-size:cover;
+  /* OCEAN DESCENT — one continuous flow: white surface (top) deepening down the whole page */
+  background:linear-gradient(180deg,#FFFFFF 0%,#EAF7FD 18%,#CDEEF8 42%,#A9E2F2 68%,#7FD3EA 100%);
+  background-repeat:no-repeat;background-attachment:fixed;background-size:cover;
 }
 .page-width{overflow:visible}
 /* let the ocean wash show through any section that doesn't paint its own background */
-.shopify-section{overflow:visible;background:transparent}
+.shopify-section{overflow:visible;background:transparent;position:relative}
+
+/* ============================================================
+   CONTINUOUS OCEAN FLOW — animated foam wave crest at the top of
+   every section, so the page reads as one flowing ocean from the
+   header down to the footer (waves drift gently sideways).
+   ============================================================ */
+.pp-ft{position:relative}
+.sec::before,.pp-ft::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:42px;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 42' preserveAspectRatio='none'%3E%3Cpath d='M0,21 C100,6 200,6 300,21 C400,36 500,36 600,21 C700,6 800,6 900,21 C1000,36 1100,36 1200,21 L1200,42 L0,42 Z' fill='%2390E0EF' opacity='0.55'/%3E%3Cpath d='M0,27 C100,14 200,14 300,27 C400,40 500,40 600,27 C700,14 800,14 900,27 C1000,40 1100,40 1200,27 L1200,42 L0,42 Z' fill='%23ffffff' opacity='0.7'/%3E%3C/svg%3E");
+  background-size:1200px 42px;background-repeat:repeat-x;background-position:left top;
+  animation:waveDrift 16s linear infinite;
+}
+/* keep section content above the wave */
+.sec>*,.pp-ft>*{position:relative;z-index:2}
+/* the hero is the surface — no crest needed directly under the header */
+.pp-hero-sec::before{display:none}
+@keyframes waveDrift{from{background-position-x:0}to{background-position-x:-1200px}}
 
 /* OCEAN POLISH — selection + scrollbar in sea tones */
 ::selection{background:rgba(0,180,216,.28);color:var(--abyss)}
@@ -146,7 +164,7 @@ input[list]{
 
 /* Respect reduced-motion preferences */
 @media(prefers-reduced-motion:reduce){
-  .marquee__track,.blob,.eyebrow::before{animation:none !important}
+  .marquee__track,.blob,.eyebrow::before,.sec::before{animation:none !important}
   [data-reveal]{transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
