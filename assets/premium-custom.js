@@ -98,7 +98,7 @@ document.querySelectorAll('[data-multi-form]').forEach(f=>{
     const done=()=>{ main.style.opacity='1'; main.removeEventListener('load',done); };
     main.addEventListener('load',done);
     main.src=t.dataset.full;
-    thumbs.forEach(x=>x.style.borderColor='#E2E8F0'); t.style.borderColor='#00C7B7';
+    thumbs.forEach(x=>x.style.borderColor='#E2E8F0'); t.style.borderColor='#00B4D8';
   };
   thumbs.forEach(t=>{
     t.addEventListener('click',()=>swap(t));
@@ -203,7 +203,7 @@ document.querySelectorAll('[data-multi-form]').forEach(f=>{
       const res=await fetch(window.routes.cart_add_url,{method:'POST',headers:{'Accept':'application/javascript'},body:new FormData(form)});
       if(!res.ok)throw new Error('add failed');
       await refreshBubble();
-      toast(PPICON.check+'Added to cart · <a href="'+cartUrl+'" style="color:#5EEAD4;font-weight:700;text-decoration:underline">View cart</a>');
+      toast(PPICON.check+'Added to cart · <a href="'+cartUrl+'" style="color:#90E0EF;font-weight:700;text-decoration:underline">View cart</a>');
       if(btn){ btn.disabled=false; btn.style.opacity=''; btn.innerHTML=orig; }
     }catch(err){
       if(btn){ btn.disabled=false; btn.style.opacity=''; btn.innerHTML=orig; }

@@ -12,9 +12,9 @@
     assign msg_html = msg | replace: code, chip
   endif
 -%}
-<div id="pp-promo-bar" data-promo-key="dcal_promo_dismissed_v1_{{ promo_id }}" data-dismissible="{{ section.settings.dismissible }}" style="background:#0B1220;color:#fff;display:none;position:relative">
+<div id="pp-promo-bar" data-promo-key="dcal_promo_dismissed_v1_{{ promo_id }}" data-dismissible="{{ section.settings.dismissible }}" style="background:linear-gradient(90deg,#023E8A 0%,#0077B6 50%,#023E8A 100%);color:#fff;display:none;position:relative">
   <div class="pp-promo-inner" style="max-width:1240px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center">
-    <span style="color:#5EEAD4;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'sparkles', size: 16 %}</span>
+    <span style="color:#90E0EF;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'sparkles', size: 16 %}</span>
     {% if section.settings.link != blank %}
       <a class="pp-promo-msg" href="{{ section.settings.link }}" style="color:#fff;text-decoration:none">{{ msg_html }}</a>
     {% else %}
@@ -29,7 +29,7 @@
 <style>
   #pp-promo-bar .pp-promo-inner{height:44px}
   #pp-promo-bar .pp-promo-msg{font-size:13px;font-weight:500;letter-spacing:.01em;color:#fff}
-  #pp-promo-bar .promo-code{background:rgba(94,234,212,.15);color:#5EEAD4;padding:2px 8px;border-radius:4px;font-weight:600;letter-spacing:.5px;margin:0 4px}
+  #pp-promo-bar .promo-code{background:rgba(144,224,239,.15);color:#90E0EF;padding:2px 8px;border-radius:4px;font-weight:600;letter-spacing:.5px;margin:0 4px}
   #pp-promo-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:10px;color:rgba(255,255,255,.5);transition:color .2s,transform .2s}
   #pp-promo-close:hover{color:#fff;transform:translateY(-50%) scale(1.1)}
   @media(max-width:600px){

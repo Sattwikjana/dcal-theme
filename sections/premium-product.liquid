@@ -1,4 +1,4 @@
-<section class="sec pp-product-sec" style="background:linear-gradient(180deg,#fff,#F0FDFA);padding:32px 0 80px 0">
+<section class="sec pp-product-sec" style="background:linear-gradient(180deg,#fff,#EAF7FC);padding:32px 0 80px 0">
   <div class="container">
     <nav class="pp-crumb" style="margin-bottom:20px;font-size:13px;color:#64748B" aria-label="Breadcrumb">
       <a href="{{ routes.root_url }}" style="color:#64748B;text-decoration:none">Home</a>
@@ -12,7 +12,7 @@
       <!-- ============ LEFT: Image gallery ============ -->
       <div class="pp-col-gallery">
         <div class="glass tilt" style="padding:12px;background:#fff;border-radius:28px;margin:0">
-          <div class="pp-image-wrap" style="aspect-ratio:1;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#ECFEFF,#F0F9FF);position:relative">
+          <div class="pp-image-wrap" style="aspect-ratio:1;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#ECF9FF,#E3F4FB);position:relative">
             {% if product.featured_image %}
               <img data-pp-main src="{{ product.featured_image | image_url: width: 1200 }}"
                    width="1200" height="1200" loading="eager"
@@ -32,7 +32,7 @@
         {% if product.images.size > 1 %}
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
             {% for img in product.images limit: 4 %}
-              <div class="pp-thumb" data-pp-thumb data-full="{{ img | image_url: width: 1200 }}" role="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.title | escape }}" style="aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#ECFEFF,#F0F9FF);border:2px solid {% if forloop.first %}#00C7B7{% else %}#E2E8F0{% endif %};cursor:pointer;transition:border-color .3s">
+              <div class="pp-thumb" data-pp-thumb data-full="{{ img | image_url: width: 1200 }}" role="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.title | escape }}" style="aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#ECF9FF,#E3F4FB);border:2px solid {% if forloop.first %}#00B4D8{% else %}#E2E8F0{% endif %};cursor:pointer;transition:border-color .3s">
                 <img src="{{ img | image_url: width: 300 }}" width="300" height="300" loading="lazy" alt="{{ product.title | escape }} - view {{ forloop.index }}"
                      style="width:100%;height:100%;object-fit:contain;display:block">
               </div>
@@ -120,17 +120,17 @@
         <!-- Trust badges -->
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;padding:22px;border:1px solid #E2E8F0;border-radius:18px;background:#fff">
           <div style="text-align:center">
-            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'truck', size: 26 %}</div>
+            <div style="color:#0077B6;display:flex;justify-content:center">{% render 'icon', name: 'truck', size: 26 %}</div>
             <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">FREE SHIPPING</div>
             <div style="font-size:11px;color:#94A3B8;margin-top:2px">Pan-India · 3-5 days</div>
           </div>
           <div style="text-align:center">
-            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'shield-check', size: 26 %}</div>
+            <div style="color:#0077B6;display:flex;justify-content:center">{% render 'icon', name: 'shield-check', size: 26 %}</div>
             <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">SECURE PAYMENT</div>
             <div style="font-size:11px;color:#94A3B8;margin-top:2px">UPI · Cards · COD</div>
           </div>
           <div style="text-align:center">
-            <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'rotate-ccw', size: 26 %}</div>
+            <div style="color:#0077B6;display:flex;justify-content:center">{% render 'icon', name: 'rotate-ccw', size: 26 %}</div>
             <div style="font-size:11px;color:#64748B;margin-top:6px;font-weight:700;letter-spacing:.05em">7-DAY RETURNS</div>
             <div style="font-size:11px;color:#94A3B8;margin-top:2px">Hassle-free refund</div>
           </div>
@@ -138,10 +138,10 @@
 
         <!-- Key benefits -->
         <div style="margin-top:32px;display:grid;gap:12px">
-          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>12+ months protection</strong> — one cartridge softens 50,000+ litres</span></div>
-          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>Zero electricity</strong> — works during power cuts</span></div>
-          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>NABL lab certified</strong> — 99% scale reduction verified</span></div>
-          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00C7B7;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>15-minute install</strong> — DIY-friendly, fits any tank</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00B4D8;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>12+ months protection</strong> — one cartridge softens 50,000+ litres</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00B4D8;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>Zero electricity</strong> — works during power cuts</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00B4D8;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>NABL lab certified</strong> — 99% scale reduction verified</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#00B4D8;display:inline-flex;flex-shrink:0">{% render 'icon', name: 'check', size: 18 %}</span><span style="font-size:15px;color:#1F2937"><strong>15-minute install</strong> — DIY-friendly, fits any tank</span></div>
         </div>
 
         <!-- Share buttons -->
@@ -154,11 +154,11 @@
 
         <!-- Accordion FAQ -->
         <div style="margin-top:36px">
-          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#0F766E;margin-bottom:12px;text-transform:uppercase">Frequently asked</div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#0077B6;margin-bottom:12px;text-transform:uppercase">Frequently asked</div>
           {% for block in section.blocks %}
             <details style="border-bottom:1px solid #E2E8F0;padding:18px 0;cursor:pointer">
               <summary style="font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;color:#0B1220">
-                {{ block.settings.q }} <span style="font-size:22px;color:#00C7B7">+</span>
+                {{ block.settings.q }} <span style="font-size:22px;color:#00B4D8">+</span>
               </summary>
               <div style="margin-top:12px;color:#64748B;line-height:1.6;font-size:15px">{{ block.settings.a }}</div>
             </details>
@@ -183,7 +183,7 @@
 <style>
   @media(max-width:900px){.pp-product-sec{padding:20px 0 60px 0 !important}}
   .pp-crumb a{transition:color .2s}
-  .pp-crumb a:hover{color:#0F766E}
+  .pp-crumb a:hover{color:#0077B6}
   /* LEFT cell = gallery + thumbnails + description stacked; RIGHT cell = sticky info.
      Simple 2-col grid (no row-spanning), so the column tops always align and no gap
      can open between the gallery and the description. Mobile stacks gallery -> description -> info. */
@@ -201,13 +201,13 @@
   .pp-image-wrap:hover img{transform:scale(1.05)}
   .pp-image-wrap img{transform-origin:center center}
   /* Variant radio buttons */
-  label input[type="radio"]:checked + span{border-color:#00C7B7 !important;background:linear-gradient(135deg,#ECFEFF,#F0F9FF) !important;color:#0F766E !important}
+  label input[type="radio"]:checked + span{border-color:#00B4D8 !important;background:linear-gradient(135deg,#ECF9FF,#E3F4FB) !important;color:#0077B6 !important}
   label:hover span{border-color:#94A3B8}
   /* Judge.me brand overrides */
   .jdgm-prev-badge__stars{color:#F59E0B !important}
   .jdgm-rev__author{font-weight:700 !important}
   .jdgm-rev__title{color:#0B1220 !important}
-  .jdgm-write-rev-link{background:linear-gradient(135deg,#0EA5E9,#00C7B7) !important;color:#fff !important;border-radius:999px !important;padding:14px 24px !important;font-weight:600 !important;border:none !important}
+  .jdgm-write-rev-link{background:linear-gradient(135deg,#0077B6,#00B4D8) !important;color:#fff !important;border-radius:999px !important;padding:14px 24px !important;font-weight:600 !important;border:none !important}
 </style>
 
 {% schema %}

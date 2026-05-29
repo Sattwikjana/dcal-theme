@@ -1,8 +1,8 @@
-<section id="science" class="sec" style="background:#0B1220;color:#fff">
+<section id="science" class="sec" style="background:linear-gradient(180deg,#012A4A 0%,#023E8A 100%);color:#fff">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center" class="sci-grid">
       <div>
-        <span class="eyebrow" data-reveal style="background:rgba(0,199,183,.15);color:#5EEAD4">LAB CERTIFIED</span>
+        <span class="eyebrow" data-reveal style="background:rgba(0,180,216,.15);color:#90E0EF">LAB CERTIFIED</span>
         <h2 class="h-section" data-reveal data-reveal-delay="1" style="color:#fff;margin:20px 0">
           The science you can <span class="grad-text">see & feel</span>.
         </h2>
@@ -12,7 +12,7 @@
         <div style="margin-top:32px;display:grid;gap:14px" data-reveal data-reveal-delay="3">
           {% for block in section.blocks %}
           <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00C7B7,#0EA5E9);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff">{% render 'icon', name: 'check', size: 16 %}</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00B4D8,#0077B6);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff">{% render 'icon', name: 'check', size: 16 %}</div>
             <div><div style="font-weight:600;font-size:17px">{{ block.settings.title }}</div><div style="color:#94A3B8;font-size:14px">{{ block.settings.text }}</div></div>
           </div>
           {% endfor %}

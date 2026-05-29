@@ -1,4 +1,4 @@
-<section class="sec" style="background:linear-gradient(180deg,#fff,#F0FDFA);padding:80px 0;min-height:60vh">
+<section class="sec" style="background:linear-gradient(180deg,#fff,#EAF7FC);padding:80px 0;min-height:60vh">
   <div class="container">
     <div style="margin-bottom:32px">
       <span class="eyebrow" data-reveal>YOUR CART</span>
@@ -7,7 +7,7 @@
 
     {% if cart.item_count == 0 %}
       <div class="glass" data-reveal style="max-width:560px;margin:0 auto;padding:48px;text-align:center;background:#fff">
-        <div style="color:#0F766E;display:flex;justify-content:center">{% render 'icon', name: 'shopping-cart', size: 56 %}</div>
+        <div style="color:#0077B6;display:flex;justify-content:center">{% render 'icon', name: 'shopping-cart', size: 56 %}</div>
         <h2 style="font-size:24px;font-weight:700;margin:14px 0 8px">Your cart is empty</h2>
         <p class="lead" style="margin:0 auto 24px">Looks like you haven't added anything yet.</p>
         <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary magnetic" style="justify-content:center">Shop D'Cal {% render 'icon', name: 'arrow-right', size: 16 %}</a>
@@ -17,7 +17,7 @@
         <div style="display:grid;gap:16px">
           {% for item in cart.items %}
             <div class="glass" data-reveal style="display:grid;grid-template-columns:96px 1fr auto;gap:18px;padding:18px;background:#fff;align-items:center">
-              <a href="{{ item.url }}" style="display:block;aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#ECFEFF,#F0F9FF)">
+              <a href="{{ item.url }}" style="display:block;aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#ECF9FF,#E3F4FB)">
                 {% if item.image %}
                   <img src="{{ item.image | image_url: width: 200 }}" width="200" height="200" loading="lazy" alt="{{ item.product.title | escape }}" style="width:100%;height:100%;object-fit:contain;display:block">
                 {% else %}
@@ -27,7 +27,7 @@
               <div>
                 <a href="{{ item.url }}" style="font-weight:700;font-size:17px;color:#0B1220;text-decoration:none">{{ item.product.title }}</a>
                 {% unless item.product.has_only_default_variant %}<div style="font-size:13px;color:#64748B;margin-top:4px">{{ item.variant.title }}</div>{% endunless %}
-                <div style="font-size:14px;color:#0F766E;margin-top:6px;font-weight:600">{{ item.final_price | money }} each</div>
+                <div style="font-size:14px;color:#0077B6;margin-top:6px;font-weight:600">{{ item.final_price | money }} each</div>
                 <div style="display:flex;align-items:center;gap:14px;margin-top:10px;flex-wrap:wrap">
                   <div data-pp-qty style="display:inline-flex;align-items:center;border:1.5px solid #E2E8F0;border-radius:12px;overflow:hidden;background:#fff">
                     <button type="button" data-qty="minus" aria-label="Decrease quantity" style="display:flex;align-items:center;padding:8px 12px;background:none;border:none;cursor:pointer;color:#0B1220">{% render 'icon', name: 'minus', size: 16 %}</button>
@@ -47,7 +47,7 @@
           <div style="display:flex;justify-content:space-between;margin-bottom:10px;color:#64748B;font-size:15px"><span>Subtotal</span><span style="color:#0B1220;font-weight:700">{{ cart.total_price | money }}</span></div>
           <div style="display:flex;justify-content:space-between;margin-bottom:18px;color:#64748B;font-size:13px"><span>Shipping</span><span>Calculated at checkout</span></div>
           {% for d in cart.cart_level_discount_applications %}
-            <div style="display:flex;justify-content:space-between;margin-bottom:10px;color:#0F766E;font-size:14px"><span>{{ d.title }}</span><span>-{{ d.total_allocated_amount | money }}</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;color:#0077B6;font-size:14px"><span>{{ d.title }}</span><span>-{{ d.total_allocated_amount | money }}</span></div>
           {% endfor %}
           <div style="border-top:1px solid #E2E8F0;margin:14px 0;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700">Total</span><span style="font-size:24px;font-weight:800">{{ cart.total_price | money }}</span></div>
           <button type="submit" name="checkout" class="btn btn-primary magnetic" style="width:100%;justify-content:center;padding:16px;margin-top:8px">Proceed to checkout {% render 'icon', name: 'arrow-right', size: 16 %}</button>
