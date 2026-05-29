@@ -49,13 +49,148 @@
       ],
       "settings": {}
     },
-    "product_reviews": {
+    "premium_product_reviews_eDk9Ba": {
       "type": "premium-product-reviews",
-      "settings": {}
+      "blocks": {
+        "review_PeWM34": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "My hair fall reduced dramatically",
+            "body": "After 6 weeks with D'Cal, my hair fall reduced by 70%. My skin doesn't feel chalky after bath. Worth every rupee.",
+            "name": "Priya Sharma",
+            "location": "Mumbai · Verified Buyer"
+          }
+        },
+        "review_pLrw3h": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Engineer-verified — it really works",
+            "body": "I'm a mechanical engineer. I was skeptical. After 4 months I dismantled my washing machine drum. Zero scale. The science is real.",
+            "name": "Rohan Mehta",
+            "location": "Bangalore · Amazon Verified"
+          }
+        },
+        "review_cW7ywk": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "15-minute install changed everything",
+            "body": "Installed on my 1000L overhead tank in 12 minutes. No plumber needed. White scale on bathroom tiles vanished within 3 weeks.",
+            "name": "Anita Kumar",
+            "location": "Delhi · Flipkart Verified"
+          }
+        },
+        "review_iMh7Qt": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "I install D'Cal in every flat I deliver",
+            "body": "I'm a builder. D'Cal is now standard in every apartment I hand over. Customer complaints about water damage dropped to zero.",
+            "name": "Vikram Joshi",
+            "location": "Pune · Builder Partner"
+          }
+        },
+        "review_3U4aBj": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Geyser bill dropped 12%",
+            "body": "IFB technician opened our 4-year-old washing machine and said the drum was the cleanest he'd ever seen. Pays for itself.",
+            "name": "Sneha Reddy",
+            "location": "Hyderabad · Google Review"
+          }
+        },
+        "review_JDAE7h": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Bathroom looks new again",
+            "body": "Six months in. Haven't scrubbed limescale off taps once. Bathroom looks like it did when it was new.",
+            "name": "Karthik Iyer",
+            "location": "Chennai · Verified Buyer"
+          }
+        },
+        "review_zXP3WF": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "verified": true,
+            "title": "Eczema symptoms much better",
+            "body": "My daughter has eczema. Within 2 months of installing D'Cal, her flare-ups reduced significantly. Shipping took 7 days, dropping 1 star for that.",
+            "name": "Ananya Singh",
+            "location": "Kolkata · Amazon Verified"
+          }
+        },
+        "review_LVKt8P": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Works on heavy borewell water",
+            "body": "Our borewell water has TDS of around 950. Most softeners give up. D'Cal handles it. Bathroom is finally usable.",
+            "name": "Manoj Patel",
+            "location": "Ahmedabad · Verified Buyer"
+          }
+        },
+        "review_QQXA9H": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Detergent use cut in half",
+            "body": "We were spending ₹800/month on detergent for a family of 5. Down to ₹400 now because soft water lathers properly. ROI in 5 months.",
+            "name": "Deepika Krishnan",
+            "location": "Coimbatore · Verified Buyer"
+          }
+        },
+        "review_jkBhfE": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Glassware stopped getting cloudy",
+            "body": "We host dinner parties often. Our glassware always looked cloudy after dishwasher. After D'Cal — crystal clear. Embarrassing problem solved.",
+            "name": "Arjun Kapoor",
+            "location": "Gurugram · Google Review"
+          }
+        }
+      },
+      "block_order": [
+        "review_PeWM34",
+        "review_pLrw3h",
+        "review_cW7ywk",
+        "review_iMh7Qt",
+        "review_3U4aBj",
+        "review_JDAE7h",
+        "review_zXP3WF",
+        "review_LVKt8P",
+        "review_QQXA9H",
+        "review_jkBhfE"
+      ],
+      "name": "Premium Product Reviews",
+      "settings": {
+        "eyebrow": "FEATURED REVIEWS",
+        "heading": "What customers say about D'Cal",
+        "subheading": "Real experiences from verified buyers across India"
+      }
     },
     "problems": {
       "type": "premium-problems",
-      "settings": {}
+      "settings": {
+        "eyebrow": "THE HARD TRUTH",
+        "heading": "You've spent lakhs on your dream house — don't let hard water spoil it",
+        "subheading": "82% of Indian homes have hard water. Here's what it's silently destroying every day.",
+        "banner_text": "Repairs of all this damage could cost around ₹5 lakhs",
+        "banner_subtext": "One D'Cal cartridge prevents it for ₹4,500"
+      }
     },
     "reviews": {
       "type": "premium-reviews",
@@ -68,7 +203,7 @@
   },
   "order": [
     "main",
-    "product_reviews",
+    "premium_product_reviews_eDk9Ba",
     "problems",
     "reviews",
     "form"

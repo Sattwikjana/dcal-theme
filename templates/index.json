@@ -21,57 +21,410 @@
         "cta_link": "#demo-form",
         "cta2_text": "See the science",
         "cta2_link": "#science",
-        "hero_image": "shopify://shop_images/photo-1658684765085-deba480d7056.avif"
+        "hero_image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_01_15_PM.png"
       }
     },
-    "premium_problems_DzbzCd": {
+    "premium_problems_yPVfqF": {
       "type": "premium-problems",
       "blocks": {
-        "problem_UAEYMq": {
+        "problem_BFghcD": {
           "type": "problem",
           "settings": {
-            "icon": "droplet",
-            "title": "Hair fall & dry skin",
-            "text": "Calcium clogs follicles, strips natural oils and triggers chronic scalp irritation."
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_22_32_PM.png",
+            "icon": "user",
+            "title": "Hair Fall & Damage",
+            "text": "Calcium binds to hair, strips natural oils, and clogs follicles. Result: chronic hair fall, dry brittle strands, and scalp irritation that no shampoo can fix."
           }
         },
-        "problem_KxCdGy": {
+        "problem_8aUbrj": {
           "type": "problem",
           "settings": {
-            "icon": "droplet",
-            "title": "White scale everywhere",
-            "text": "Limescale ruins taps, tiles, glassware and shower heads in months."
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_23_32_PM.png",
+            "icon": "hand",
+            "title": "Rough Dry Skin",
+            "text": "Hard water leaves a mineral film on your skin that disrupts moisture barrier. Result: dryness, eczema flare-ups, premature aging, and cracking."
           }
         },
-        "problem_yA6QEq": {
+        "problem_TtnmAn": {
           "type": "problem",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_02_40_PM.png",
             "icon": "droplet",
-            "title": "Appliances die early",
-            "text": "Geysers, washing machines and RO membranes lose 40-60% lifespan."
+            "title": "Corroded Pipes",
+            "text": "Hard water eats away at your home's plumbing from inside. Iron and rust accumulate, water pressure drops, and pipes need replacement years before their time."
           }
         },
-        "problem_FrQWb8": {
+        "problem_pyggz9": {
           "type": "problem",
           "settings": {
-            "icon": "droplet",
-            "title": "Faded clothes",
-            "text": "Detergent doesn't lather. Fabrics turn rough, dull and yellow over time."
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_15_34_PM.png",
+            "icon": "circle-dot",
+            "title": "Stained Sinks",
+            "text": "Yellow, orange, and brown stains lock into ceramic and stainless steel. No amount of regular cleaning removes them — they're mineral deposits embedded in the surface."
+          }
+        },
+        "problem_By7AAC": {
+          "type": "problem",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_17_36_PM.png",
+            "icon": "grid-3x3",
+            "title": "Scaled Tiles",
+            "text": "White limescale film covers your bathroom tiles, glass shower doors, and mirrors. It dulls the shine and looks dirty no matter how often you clean."
+          }
+        },
+        "problem_kFhmt9": {
+          "type": "problem",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_18_56_PM.png",
+            "icon": "zap",
+            "title": "Damaged Heater Rod",
+            "text": "Your geyser's heating coil becomes encrusted with limescale. Efficiency drops 40% in 18 months, electricity bills spike, and the heater dies years early."
+          }
+        },
+        "problem_YiFVQM": {
+          "type": "problem",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_19_55_PM.png",
+            "icon": "settings",
+            "title": "Clogged Faucets",
+            "text": "Mineral deposits choke the aerators in your taps. Water pressure drops, spray patterns get uneven, and chrome finishes pit and peel."
+          }
+        },
+        "problem_hEztew": {
+          "type": "problem",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_12_21_36_PM.png",
+            "icon": "shower-head",
+            "title": "Weak Showers",
+            "text": "Showerheads clog with calcium scale within months. Spray weakens, water sprays sideways, and pressure drops to a trickle."
           }
         }
       },
       "block_order": [
-        "problem_UAEYMq",
-        "problem_KxCdGy",
-        "problem_yA6QEq",
-        "problem_FrQWb8"
-      ],
-      "custom_css": [
-        "section h3,section p {color: #fff !important;}",
-        "section .h-section {color: #fff !important;}"
+        "problem_BFghcD",
+        "problem_8aUbrj",
+        "problem_TtnmAn",
+        "problem_pyggz9",
+        "problem_By7AAC",
+        "problem_kFhmt9",
+        "problem_YiFVQM",
+        "problem_hEztew"
       ],
       "name": "Premium Problems",
-      "settings": {}
+      "settings": {
+        "eyebrow": "THE HARD TRUTH",
+        "heading": "You've spent lakhs on your dream house — don't let hard water spoil it",
+        "subheading": "82% of Indian homes have hard water. Here's what it's silently destroying every day.",
+        "banner_text": "Repairs of all this damage could cost around ₹5 lakhs",
+        "banner_subtext": "One D'Cal cartridge prevents it for ₹4,500"
+      }
+    },
+    "premium_product_showcase_DheNQR": {
+      "type": "premium-product-showcase",
+      "blocks": {
+        "feature_QczJWQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "zap-off",
+            "title": "No Electricity",
+            "description": "Works on water pressure alone, even during power cuts"
+          }
+        },
+        "feature_BddKK3": {
+          "type": "feature",
+          "settings": {
+            "icon": "wrench",
+            "title": "No Maintenance",
+            "description": "Zero servicing, zero salt refills, zero chemicals"
+          }
+        },
+        "feature_FDG9BL": {
+          "type": "feature",
+          "settings": {
+            "icon": "dollar-sign",
+            "title": "Cost Effective",
+            "description": "One-time investment of ₹4,500 vs ₹50,000+ alternatives"
+          }
+        },
+        "feature_BggpzA": {
+          "type": "feature",
+          "settings": {
+            "icon": "droplets",
+            "title": "Consistent Water Quality",
+            "description": "Naturally mineralised water — taste stays pure"
+          }
+        },
+        "feature_EYw6eU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shield-check",
+            "title": "No Plumbing",
+            "description": "Drop in your tank, 15-minute install, no plumber"
+          }
+        },
+        "feature_wq3C9H": {
+          "type": "feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "A Sustainable Solution",
+            "description": "No water wastage. No regeneration. No power drain."
+          }
+        }
+      },
+      "block_order": [
+        "feature_QczJWQ",
+        "feature_BddKK3",
+        "feature_FDG9BL",
+        "feature_BggpzA",
+        "feature_EYw6eU",
+        "feature_wq3C9H"
+      ],
+      "name": "Premium Product Showcase",
+      "settings": {
+        "product_image": "shopify://shop_images/779a5a4c-afee-4e07-9a78-cdf476ba8872.webp",
+        "eyebrow": "WHY CHOOSE D'CAL",
+        "heading": "The revolutionary hard water conditioner",
+        "subheading": "One drop. Whole-home protection. Zero maintenance.",
+        "show_badge": true,
+        "badge_text": "Try before you buy"
+      }
+    },
+    "premium_about_tech_9RGnPb": {
+      "type": "premium-about-tech",
+      "blocks": {
+        "chip_mfqnDC": {
+          "type": "chip",
+          "settings": {
+            "icon": "flask-conical",
+            "label": "D'Cal Contents",
+            "text": "Tasteless, odorless, colorless, non-toxic material. Test reports available on website."
+          }
+        },
+        "chip_KtmziW": {
+          "type": "chip",
+          "settings": {
+            "icon": "timer",
+            "label": "Life of D'Cal",
+            "text": "10–12 months (depending on water usage). Repeat performance test after 10 months."
+          }
+        },
+        "chip_dVBiiw": {
+          "type": "chip",
+          "settings": {
+            "icon": "droplet-tank",
+            "label": "How to Use",
+            "text": "Just drop in overhead water tank. Suitable for tanks ~1,500 litres. For apartments, contact us."
+          }
+        }
+      },
+      "block_order": [
+        "chip_mfqnDC",
+        "chip_KtmziW",
+        "chip_dVBiiw"
+      ],
+      "name": "Premium About Tech",
+      "settings": {
+        "image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_11_59_29_AM.png",
+        "eyebrow": "OUR TECHNOLOGY",
+        "heading": "The science of masking calcium",
+        "body": "<p>D'Cal uses proprietary technology to mask calcium ions, making them inert and incapable of forming scales on your taps, fixtures, and pipes.</p><p>The system prevents scaling and hard water stains on your faucets, taps, fixtures, and mirrors — ensuring your bathroom and kitchen fittings look new for longer.</p><p>Appliances using borewell water like geysers and washing machines are protected from internal damage and corrosion, extending their lifespan.</p><p>D'Cal reduces the harmful effects of hard water on your hair and skin while preventing corrosion of your entire house piping system.</p>"
+      }
+    },
+    "premium_self_test_PxtMNn": {
+      "type": "premium-self-test",
+      "blocks": {
+        "step_jTDpjH": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Use D'Cal for 1 day",
+            "text": "Install the cartridge in your overhead tank and let it work for 24 hours."
+          }
+        },
+        "step_FA9ztE": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Collect 2 water samples",
+            "text": "Take 1 litre of your regular borewell water and 1 litre of D'Cal-treated water in separate steel utensils."
+          }
+        },
+        "step_QkaLyp": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Heat for 10-15 minutes",
+            "text": "Heat both samples for 10-15 minutes. The difference will be visible to your naked eye."
+          }
+        }
+      },
+      "block_order": [
+        "step_jTDpjH",
+        "step_FA9ztE",
+        "step_QkaLyp"
+      ],
+      "name": "Premium Self Test",
+      "settings": {
+        "eyebrow": "TRY BEFORE YOU BUY",
+        "heading": "See the proof in 10 minutes",
+        "subheading": "Don't trust us — trust your own eyes. Run this simple test at home.",
+        "compare_heading": "See the visual difference yourself",
+        "before_image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_11_55_50_AM.png",
+        "after_image": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_11_57_22_AM.png",
+        "before_label": "Ordinary Bore Water",
+        "after_label": "D'Cal Treated Water",
+        "guarantee_text": "6-Month Free Replacement Warranty"
+      }
+    },
+    "premium_benefits_list_L3Gk9e": {
+      "type": "premium-benefits-list",
+      "blocks": {
+        "benefit_WxpnUG": {
+          "type": "benefit",
+          "settings": {
+            "title": "High Cost",
+            "subtext": ""
+          }
+        },
+        "benefit_GhqEUT": {
+          "type": "benefit",
+          "settings": {
+            "title": "Maintenance",
+            "subtext": ""
+          }
+        },
+        "benefit_dWefHG": {
+          "type": "benefit",
+          "settings": {
+            "title": "Regeneration",
+            "subtext": ""
+          }
+        },
+        "benefit_6KwafN": {
+          "type": "benefit",
+          "settings": {
+            "title": "Plumbing Required",
+            "subtext": ""
+          }
+        },
+        "benefit_wkmEak": {
+          "type": "benefit",
+          "settings": {
+            "title": "Water Wastage",
+            "subtext": ""
+          }
+        },
+        "benefit_wzFdBM": {
+          "type": "benefit",
+          "settings": {
+            "title": "Electricity Required",
+            "subtext": ""
+          }
+        },
+        "benefit_RGrxzi": {
+          "type": "benefit",
+          "settings": {
+            "title": "Manpower Required",
+            "subtext": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_WxpnUG",
+        "benefit_GhqEUT",
+        "benefit_dWefHG",
+        "benefit_6KwafN",
+        "benefit_wkmEak",
+        "benefit_wzFdBM",
+        "benefit_RGrxzi"
+      ],
+      "name": "Premium Benefits List",
+      "settings": {
+        "eyebrow": "WHAT D'CAL DOESN'T NEED",
+        "heading": "Seven things you'll never deal with",
+        "subheading": "",
+        "badge_text": "NO"
+      }
+    },
+    "premium_comparison_WtGDgh": {
+      "type": "premium-comparison",
+      "blocks": {
+        "row_ghRN3E": {
+          "type": "row",
+          "settings": {
+            "label": "COST",
+            "us": "₹4,500",
+            "them": "₹50,000+"
+          }
+        },
+        "row_wk8z3d": {
+          "type": "row",
+          "settings": {
+            "label": "MAINTENANCE",
+            "us": "No Maintenance",
+            "them": "Required Regularly"
+          }
+        },
+        "row_4RgPJi": {
+          "type": "row",
+          "settings": {
+            "label": "REGENERATION",
+            "us": "No Regeneration",
+            "them": "Every Fortnight"
+          }
+        },
+        "row_ECMnHp": {
+          "type": "row",
+          "settings": {
+            "label": "INSTALLATION",
+            "us": "Easy DIY (15 min)",
+            "them": "Requires Plumber, Time-Consuming"
+          }
+        },
+        "row_WjKLC7": {
+          "type": "row",
+          "settings": {
+            "label": "WATER USE",
+            "us": "Saves Water, Power & Time",
+            "them": "Wastes Water, Requires Power"
+          }
+        },
+        "row_8BTbii": {
+          "type": "row",
+          "settings": {
+            "label": "WARRANTY",
+            "us": "6-Month Free Replacement",
+            "them": "Usually None"
+          }
+        },
+        "row_TJKLXt": {
+          "type": "row",
+          "settings": {
+            "label": "LIFESPAN",
+            "us": "10-12 Months",
+            "them": "Varies"
+          }
+        }
+      },
+      "block_order": [
+        "row_ghRN3E",
+        "row_wk8z3d",
+        "row_4RgPJi",
+        "row_ECMnHp",
+        "row_WjKLC7",
+        "row_8BTbii",
+        "row_TJKLXt"
+      ],
+      "name": "Premium Comparison",
+      "settings": {
+        "eyebrow": "WHY D'CAL WINS",
+        "heading": "D'Cal vs traditional softeners",
+        "subheading": "Same softening, 90% less cost, zero hassle",
+        "col_label": "Benefit",
+        "col_us": "D'CAL WATER SOFTENER",
+        "col_them": "OTHER PRODUCTS",
+        "banner_text": "Avoid damages that could cost around ₹5 lakhs"
+      }
     },
     "premium_products_CJ7WYY": {
       "type": "premium-products",
@@ -118,6 +471,68 @@
       "name": "Premium Products",
       "settings": {}
     },
+    "premium_certifications_Q4cQFr": {
+      "type": "premium-certifications",
+      "blocks": {
+        "cert_HV3aLB": {
+          "type": "cert",
+          "settings": {
+            "icon": "shield-check",
+            "use_tricolor": false,
+            "title": "",
+            "text": "ISO 9001 Quality Management"
+          }
+        },
+        "cert_bY7BQW": {
+          "type": "cert",
+          "settings": {
+            "icon": "award",
+            "use_tricolor": false,
+            "title": "",
+            "text": "IP India #317385-001"
+          }
+        },
+        "cert_izmPeM": {
+          "type": "cert",
+          "settings": {
+            "icon": "leaf",
+            "use_tricolor": false,
+            "title": "",
+            "text": "Food Grade Certified"
+          }
+        },
+        "cert_Khak9h": {
+          "type": "cert",
+          "settings": {
+            "icon": "lightbulb",
+            "use_tricolor": false,
+            "title": "",
+            "text": "Awarded by Telangana State Innovation Cell"
+          }
+        },
+        "cert_BKQwnp": {
+          "type": "cert",
+          "settings": {
+            "icon": "shield-check",
+            "use_tricolor": true,
+            "title": "",
+            "text": "Proudly Made in India"
+          }
+        }
+      },
+      "block_order": [
+        "cert_HV3aLB",
+        "cert_bY7BQW",
+        "cert_izmPeM",
+        "cert_Khak9h",
+        "cert_BKQwnp"
+      ],
+      "name": "Premium Certifications",
+      "settings": {
+        "eyebrow": "CERTIFIED & TRUSTED",
+        "heading": "Lab-tested. Government-certified. Made in India."
+      }
+    },
     "premium_science_BDWfj8": {
       "type": "premium-science",
       "blocks": {
@@ -149,7 +564,10 @@
         "fact_KJrhyC"
       ],
       "name": "Premium Science",
-      "settings": {}
+      "settings": {
+        "before": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_11_54_02_AM.png",
+        "after": "shopify://shop_images/ChatGPT_Image_May_28_2026_at_11_54_06_AM.png"
+      }
     },
     "premium_reviews_f9rFab": {
       "type": "premium-reviews",
@@ -213,8 +631,14 @@
   },
   "order": [
     "premium_hero_84ULJA",
-    "premium_problems_DzbzCd",
+    "premium_problems_yPVfqF",
+    "premium_product_showcase_DheNQR",
+    "premium_about_tech_9RGnPb",
+    "premium_self_test_PxtMNn",
+    "premium_benefits_list_L3Gk9e",
+    "premium_comparison_WtGDgh",
     "premium_products_CJ7WYY",
+    "premium_certifications_Q4cQFr",
     "premium_science_BDWfj8",
     "premium_reviews_f9rFab",
     "premium_demo_form_cpXHMt"
