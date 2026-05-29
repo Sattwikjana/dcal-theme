@@ -247,3 +247,31 @@ a.link,.link:not(.button){color:rgb(0,119,182)}
 .button:not([disabled]):not(.button--secondary):not(.button--tertiary):hover{
   box-shadow:0 14px 30px -10px rgba(0,119,182,.55) !important;
 }
+
+/* ============================================================
+   HEADER BRAND — small logo + gradient "D'Cal" (footer style),
+   and centered nav, without growing the header height.
+   ============================================================ */
+.header__heading{margin:0}
+.header__heading-link{padding-top:0;padding-bottom:0}
+.pp-brand-lockup{display:inline-flex;align-items:center;gap:9px;line-height:1}
+.pp-brand-logo{height:32px;width:auto;display:block;flex-shrink:0}
+.header .pp-brand-name{
+  font-family:'Space Grotesk','Inter',sans-serif;font-weight:800;font-size:30px;
+  letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(135deg,#0077B6 0%,#00B4D8 55%,#48CAE4 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+/* center the Home/Catalog/Contact nav on desktop (brand stays left, icons right).
+   Dawn's middle-left grid is 'heading navigation icons' / auto auto 1fr — switching
+   the columns to 1fr auto 1fr makes the equal sides center the nav column. */
+@media screen and (min-width:990px){
+  .header--middle-left{
+    grid-template-columns:1fr auto 1fr !important;
+    column-gap:1rem !important;
+  }
+  .header--middle-left .header__heading,
+  .header--middle-left .header__heading-link{justify-self:start !important}
+  .header--middle-left .header__inline-menu{justify-self:center !important}
+  .header--middle-left .header__icons{justify-self:end !important}
+}

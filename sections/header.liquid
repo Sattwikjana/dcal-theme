@@ -172,7 +172,10 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="pp-brand-lockup">
+            <img class="pp-brand-logo" src="{{ 'dcal-logo.png' | asset_url }}" width="200" height="200" alt="" loading="eager">
+            <span class="h2 pp-brand-name">{{ shop.name }}</span>
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -215,7 +218,10 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="pp-brand-lockup">
+            <img class="pp-brand-logo" src="{{ 'dcal-logo.png' | asset_url }}" width="200" height="200" alt="" loading="eager">
+            <span class="h2 pp-brand-name">{{ shop.name }}</span>
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
