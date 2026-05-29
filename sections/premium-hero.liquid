@@ -8,7 +8,7 @@
           {{ section.settings.heading }}
           <span class="grad-text">{{ section.settings.heading_accent }}</span>
         </h1>
-        <p class="lead" data-reveal data-reveal-delay="2">{{ section.settings.subtext }}</p>
+        <p class="lead" data-reveal data-reveal-delay="2">{{ section.settings.subtext | replace: '50,000+ families', '15+ lakh customers' | replace: '50,000+', '15+ lakh' }}</p>
         <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px" data-reveal data-reveal-delay="3">
           <a href="{{ section.settings.cta_link | default: '#demo-form' }}" class="btn btn-primary magnetic">{{ section.settings.cta_text }}</a>
           {% if section.settings.cta2_text != blank %}<a href="{{ section.settings.cta2_link | default: '#science' }}" class="btn btn-ghost magnetic">{{ section.settings.cta2_text }}</a>{% endif %}

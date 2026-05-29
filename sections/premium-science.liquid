@@ -13,7 +13,7 @@
           {% for block in section.blocks %}
           <div style="display:flex;gap:14px;align-items:flex-start">
             <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00B4D8,#0077B6);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff">{% render 'icon', name: 'check', size: 16 %}</div>
-            <div><div style="font-weight:600;font-size:17px">{{ block.settings.title }}</div><div style="color:#94A3B8;font-size:14px">{{ block.settings.text }}</div></div>
+            <div><div style="font-weight:600;font-size:17px">{{ block.settings.title | replace: 'Scale Reduction', 'Scale Minimization' }}</div><div style="color:#94A3B8;font-size:14px">{{ block.settings.text }}</div></div>
           </div>
           {% endfor %}
         </div>

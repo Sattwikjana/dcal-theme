@@ -189,6 +189,60 @@
         "badge_text": "Try before you buy"
       }
     },
+    "premium_products_CJ7WYY": {
+      "type": "premium-products",
+      "blocks": {
+        "product_EhyKUU": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-hard-water-softener",
+            "tag": "Water Softener",
+            "bestseller": true
+          }
+        },
+        "product_m3fHW9": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-shower-head-filter",
+            "tag": "Premium",
+            "bestseller": false
+          }
+        },
+        "product_mPpNfH": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-tap-filter",
+            "tag": "Premium",
+            "bestseller": false
+          }
+        },
+        "product_NqDKJJ": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-washing-machine-ball",
+            "tag": "Laundry Care",
+            "bestseller": false
+          }
+        },
+        "product_qx6r6y": {
+          "type": "product",
+          "settings": {
+            "product": "dcal-tap-tile-cleaner",
+            "tag": "Cleaning",
+            "bestseller": false
+          }
+        }
+      },
+      "block_order": [
+        "product_EhyKUU",
+        "product_m3fHW9",
+        "product_mPpNfH",
+        "product_NqDKJJ",
+        "product_qx6r6y"
+      ],
+      "name": "Premium Products",
+      "settings": {}
+    },
     "premium_about_tech_9RGnPb": {
       "type": "premium-about-tech",
       "blocks": {
@@ -426,51 +480,6 @@
         "banner_text": "Avoid damages that could cost around ₹5 lakhs"
       }
     },
-    "premium_products_CJ7WYY": {
-      "type": "premium-products",
-      "blocks": {
-        "product_EhyKUU": {
-          "type": "product",
-          "settings": {
-            "product": "dcal-hard-water-softener",
-            "tag": "Water Softener",
-            "bestseller": true
-          }
-        },
-        "product_mPpNfH": {
-          "type": "product",
-          "settings": {
-            "product": "dcal-tap-filter",
-            "tag": "Premium",
-            "bestseller": false
-          }
-        },
-        "product_NqDKJJ": {
-          "type": "product",
-          "settings": {
-            "product": "dcal-washing-machine-ball",
-            "tag": "Laundry Care",
-            "bestseller": false
-          }
-        },
-        "product_qx6r6y": {
-          "type": "product",
-          "settings": {
-            "product": "dcal-tap-tile-cleaner",
-            "tag": "Cleaning",
-            "bestseller": false
-          }
-        }
-      },
-      "block_order": [
-        "product_EhyKUU",
-        "product_mPpNfH",
-        "product_NqDKJJ",
-        "product_qx6r6y"
-      ],
-      "name": "Premium Products",
-      "settings": {}
-    },
     "premium_certifications_Q4cQFr": {
       "type": "premium-certifications",
       "blocks": {
@@ -633,11 +642,11 @@
     "premium_hero_84ULJA",
     "premium_problems_yPVfqF",
     "premium_product_showcase_DheNQR",
+    "premium_products_CJ7WYY",
     "premium_about_tech_9RGnPb",
     "premium_self_test_PxtMNn",
     "premium_benefits_list_L3Gk9e",
     "premium_comparison_WtGDgh",
-    "premium_products_CJ7WYY",
     "premium_certifications_Q4cQFr",
     "premium_science_BDWfj8",
     "premium_reviews_f9rFab",
