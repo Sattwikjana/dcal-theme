@@ -88,6 +88,22 @@
       </div>
     </div>
 
+    <!-- ============ PAYMENT TRUST STRIP ============ -->
+    <div class="pp-ft-pay">
+      <div class="pp-ft-pay-left">
+        {% render 'icon', name: 'shield-check', size: 17 %}
+        <span>100% Secure Checkout · Razorpay Protected</span>
+      </div>
+      <div class="pp-ft-pay-methods" role="list" aria-label="Accepted payment methods">
+        <span class="pp-pay pp-pay--upi" role="listitem" title="UPI">UPI</span>
+        <span class="pp-pay pp-pay--visa" role="listitem" title="Visa">VISA</span>
+        <span class="pp-pay" role="listitem" title="Mastercard"><svg width="32" height="20" viewBox="0 0 32 20" aria-hidden="true"><circle cx="12" cy="10" r="8" fill="#EB001B"/><circle cx="20" cy="10" r="8" fill="#F79E1B" fill-opacity=".9"/></svg></span>
+        <span class="pp-pay pp-pay--rupay" role="listitem" title="RuPay">RuPay</span>
+        <span class="pp-pay pp-pay--razorpay" role="listitem" title="Razorpay">Razorpay</span>
+        <span class="pp-pay pp-pay--cod" role="listitem" title="Cash on Delivery">COD</span>
+      </div>
+    </div>
+
     <div class="pp-ft-bottom">
       <div class="pp-ft-copyright">{{ section.settings.copyright }}</div>
       <div class="pp-ft-made">
@@ -129,7 +145,19 @@
   .pp-ft-entity-contacts a:hover{color:#90E0EF;text-decoration:underline}
   .pp-ft-entity-contacts a:focus-visible{outline:2px solid #90E0EF;outline-offset:3px;border-radius:4px}
 
-  .pp-ft-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:30px;margin-top:60px;display:flex;justify-content:space-between;align-items:center;color:#64748B;font-size:13px;flex-wrap:wrap;gap:12px}
+  /* Payment trust strip */
+  .pp-ft-pay{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:24px 0;border-top:1px solid rgba(255,255,255,.1)}
+  .pp-ft-pay-left{display:flex;align-items:center;gap:9px;color:#90E0EF;font-weight:600;font-size:14px}
+  .pp-ft-pay-left svg{flex-shrink:0}
+  .pp-ft-pay-methods{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .pp-pay{display:inline-flex;align-items:center;justify-content:center;height:30px;min-width:48px;padding:0 11px;background:#fff;border-radius:7px;box-shadow:0 3px 10px rgba(2,8,23,.25);font-weight:800;font-size:12px;line-height:1}
+  .pp-pay svg{display:block}
+  .pp-pay--upi{color:#0B1220}
+  .pp-pay--visa{color:#1A1F71;font-style:italic;font-size:14px;letter-spacing:.02em}
+  .pp-pay--rupay{color:#0A4DA0}
+  .pp-pay--razorpay{color:#072654;font-size:11px}
+  .pp-pay--cod{color:#0B6E4F;letter-spacing:.04em}
+  .pp-ft-bottom{padding-top:22px;margin-top:0;display:flex;justify-content:space-between;align-items:center;color:#64748B;font-size:13px;flex-wrap:wrap;gap:12px}
   .pp-ft-made{display:inline-flex;align-items:center;gap:10px}
   .pp-ft-tricolor{display:inline-flex;width:24px;height:16px;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,.12);vertical-align:middle}
   .pp-ft-tricolor>span{flex:1}
