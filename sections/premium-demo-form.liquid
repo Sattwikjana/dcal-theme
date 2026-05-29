@@ -30,7 +30,7 @@
 
           <input type="text" name="contact[address]" aria-label="Street address" placeholder="Street address *" required style="width:100%;padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:14px;font-size:15px;background:#fff">
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div class="pp-form-row">
             <input type="text" name="contact[city]" aria-label="City" placeholder="City *" required list="indian-cities" autocomplete="off" style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff">
 
             <select name="contact[state]" aria-label="State" required style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff;color:#64748B;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 16px center">
@@ -75,7 +75,7 @@
             </select>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div class="pp-form-row">
             <input type="text" name="contact[country]" value="India" aria-label="Country" readonly style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#F8FAFC;color:#94A3B8">
             <input type="text" name="contact[pincode]" aria-label="PIN code" placeholder="PIN code *" pattern="[0-9]{6}" required style="padding:16px 18px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:15px;background:#fff">
           </div>
@@ -116,6 +116,21 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* Demo form: responsive two-up rows (city/state, country/pincode) */
+  #demo-form .pp-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  /* every field fills its cell and never overflows on the right */
+  #demo-form input,#demo-form select{box-sizing:border-box;width:100%;max-width:100%}
+  @media(max-width:600px){
+    #demo-form .glass{padding:28px 18px !important}           /* roomy card was clipping fields */
+    #demo-form .pp-form-row{grid-template-columns:1fr}        /* city/state & country/pincode stack */
+    #demo-form .sec{padding:56px 0}
+  }
+  @media(max-width:380px){
+    #demo-form .glass{padding:22px 14px !important}
+  }
+</style>
 
 <datalist id="indian-cities"></datalist>
 <script>
