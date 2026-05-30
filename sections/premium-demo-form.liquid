@@ -139,6 +139,26 @@
   cities.forEach(c=>{const o=document.createElement('option');o.value=c;dl.appendChild(o);});
 </script>
 
+<script>
+  /* Send each demo-kit submission to the lead webhook (n8n -> creates a tagged Shopify customer).
+     Fire-and-forget via sendBeacon so it survives the form's page navigation; the email notification still fires. */
+  (function(){
+    var form = document.querySelector('#demo-form [data-multi-form]') || document.querySelector('#demo-form form');
+    if(!form) return;
+    var WEBHOOK = {{ section.settings.lead_webhook_url | json }};
+    form.addEventListener('submit', function(){
+      try{
+        if(!WEBHOOK || !navigator.sendBeacon) return;
+        if(form.checkValidity && !form.checkValidity()) return;
+        var get = function(n){ var el = form.querySelector('[name="contact['+n+']"]'); return el ? (el.value || '') : ''; };
+        var data = new URLSearchParams();
+        ['name','phone','email','age','address','city','state','pincode','source','home_type'].forEach(function(k){ data.append(k, get(k)); });
+        navigator.sendBeacon(WEBHOOK, new Blob([data.toString()], { type: 'application/x-www-form-urlencoded' }));
+      }catch(e){}
+    });
+  })();
+</script>
+
 {% schema %}
-{"name":"Premium Demo Form","presets":[{"name":"Premium Demo Form"}]}
+{"name":"Premium Demo Form","settings":[{"type":"header","content":"Lead capture (n8n -> Shopify Customer)"},{"type":"text","id":"lead_webhook_url","label":"Lead webhook URL","info":"Each submission is sent here to create a tagged 'Demo Kit Lead' customer. Keep the default unless your n8n webhook URL changes.","default":"https://n8n.srv1048087.hstgr.cloud/webhook/dcal-demo-kit"}],"presets":[{"name":"Premium Demo Form"}]}
 {% endschema %}
