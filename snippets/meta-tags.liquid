@@ -19,11 +19,24 @@
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- if page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
-  <meta property="og:image:width" content="{{ page_image.width }}">
-  <meta property="og:image:height" content="{{ page_image.height }}">
+{%- liquid
+  assign og_img = blank
+  if request.page_type == 'product' and product.featured_image
+    assign og_img = product.featured_image
+  elsif request.page_type == 'article' and article.image
+    assign og_img = article.image
+  endif
+-%}
+{%- if og_img != blank -%}
+  <meta property="og:image" content="http:{{ og_img | image_url: width: 1200 }}">
+  <meta property="og:image:secure_url" content="https:{{ og_img | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="{{ og_img.width }}">
+  <meta property="og:image:height" content="{{ og_img.height }}">
+{%- else -%}
+  <meta property="og:image" content="https:{{ 'og-image.png' | asset_url }}">
+  <meta property="og:image:secure_url" content="https:{{ 'og-image.png' | asset_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
